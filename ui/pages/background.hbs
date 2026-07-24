@@ -1,0 +1,49 @@
+<div class="axyum-page">
+  <h2 class="axyum-page-title">{{localize "LD_AXYUM.Pages.Background"}}</h2>
+  <p class="axyum-page-description">
+    Choose a background that defines your character's past and provides ability score increases and skill proficiencies.
+  </p>
+
+  <!-- Compendium Filter Buttons -->
+  {{#if backgroundCompendiumFilters}}
+  <div class="compendium-filters">
+    <span class="filter-label"><i class="fas fa-filter"></i> Filter by Source:</span>
+    <div class="filter-buttons">
+      {{#each backgroundCompendiumFilters}}
+        <button class="background-compendium-filter-btn {{#if (eq this.id ../selectedBackgroundCompendiumFilter)}}active{{/if}}" 
+                data-filter="{{this.id}}"
+                type="button">
+          <i class="fas fa-book"></i>
+          <span class="filter-name">{{this.name}}</span>
+          <span class="filter-count">({{this.count}})</span>
+        </button>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="axyum-selection-grid">
+    {{#each backgrounds}}
+      <button type="button" class="axyum-selection-card {{#if (eq this.id ../character.background.id)}}selected{{/if}}"
+           data-action="selectBackground"
+           data-background-id="{{this.id}}" data-background-name="{{this.name}}" data-pack-name="{{this.packName}}"
+           title="Click to select, Shift+Click to view details">
+        <h3 class="axyum-selection-card-title">{{this.name}}</h3>
+        <p class="axyum-selection-card-desc">{{this.source}}</p>
+      </button>
+    {{else}}
+      <p style="grid-column: 1 / -1; color: #999; text-align: center; padding: 2rem;">
+        {{localize "LD_AXYUM.Messages.LoadingCompendia"}}
+      </p>
+    {{/each}}
+  </div>
+
+  {{#if characterData.background.id}}
+    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--axyum-secondary); border-left: 4px solid var(--axyum-primary); border-radius: 6px;">
+      <p><strong>{{localize "LD_AXYUM.Messages.Selected"}}:</strong> {{characterData.background.name}}</p>
+    </div>
+  {{/if}}
+
+  <input type="hidden" name="background.id" value="{{characterData.background.id}}">
+  <input type="hidden" name="background.name" value="{{characterData.background.name}}">
+</div>

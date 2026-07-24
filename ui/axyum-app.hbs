@@ -1,0 +1,129 @@
+<!-- LD Axyum Main Application Template -->
+<form class="axyum-form ld-axyum-layout" onsubmit="event.preventDefault();">
+  
+  <!-- Top Navigation Bar -->
+  <header class="axyum-topbar">
+    <div class="axyum-branding">
+      <div class="brand-text">AXYUM</div>
+    </div>
+
+    <nav class="axyum-steps">
+      <ul class="steps-list">
+        {{#each steps as |step index|}}
+        <li class="step-item {{#if (eq ../currentPage step.id)}}active{{/if}} {{#if (gt ../currentPageIndex index)}}completed{{/if}}" 
+            title="{{localize step.label}}">
+          <div class="step-marker">
+            {{#if (gt ../currentPageIndex index)}}
+              <i class="fas fa-check"></i>
+            {{else}}
+              <span>{{add index 1}}</span>
+            {{/if}}
+          </div>
+          <span class="step-label">{{localize step.label}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </nav>
+
+    <div class="version-info">v{{version}}</div>
+  </header>
+
+  <!-- Main Body Container (Content + Preview) -->
+  <div class="axyum-body-container">
+    
+    <!-- Main Content Area -->
+    <div class="axyum-main-panel">
+      
+      <!-- Step Title Header -->
+      <div class="step-header">
+        <h2 class="step-title">{{localize currentStepLabel}}</h2>
+        <div class="step-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: {{percent currentPageIndex totalPages}}%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable Content -->
+      <main class="axyum-content">
+        <div class="content-wrapper">
+          {{#if (eq currentPage "welcome")}}
+            {{> modules/ld-axyum/ui/pages/welcome this}}
+          {{else if (eq currentPage "role")}}
+            {{> modules/ld-axyum/ui/pages/role this}}
+          {{else if (eq currentPage "class")}}
+            {{> modules/ld-axyum/ui/pages/class this}}
+          {{else if (eq currentPage "multiclass")}}
+            {{> modules/ld-axyum/ui/pages/multiclass this}}
+          {{else if (eq currentPage "race")}}
+            {{> modules/ld-axyum/ui/pages/race this}}
+          {{else if (eq currentPage "background")}}
+            {{> modules/ld-axyum/ui/pages/background this}}
+          {{else if (eq currentPage "abilities")}}
+            {{> modules/ld-axyum/ui/pages/abilities this}}
+          {{else if (eq currentPage "skills")}}
+            {{> modules/ld-axyum/ui/pages/skills this}}
+          {{else if (eq currentPage "proficiencies")}}
+            {{> modules/ld-axyum/ui/pages/proficiencies this}}
+          {{else if (eq currentPage "equipment")}}
+            {{> modules/ld-axyum/ui/pages/equipment this}}
+          {{else if (eq currentPage "spells")}}
+            {{> modules/ld-axyum/ui/pages/spells this}}
+          {{else if (eq currentPage "feat-selection")}}
+            {{> modules/ld-axyum/ui/pages/feat-selection this}}
+          {{else if (eq currentPage "details")}}
+            {{> modules/ld-axyum/ui/pages/details this}}
+          {{else if (eq currentPage "biography")}}
+            {{> modules/ld-axyum/ui/pages/biography this}}
+          {{else if (eq currentPage "summary")}}
+            {{> modules/ld-axyum/ui/pages/summary this}}
+          {{/if}}
+        </div>
+      </main>
+
+      <!-- Action Footer -->
+      <footer class="axyum-footer">
+        <div class="axyum-nav-buttons">
+          {{#unless isFirstPage}}
+            <button type="button" class="axyum-prev axyum-btn axyum-btn-secondary" data-action="previous">
+              <i class="fas fa-chevron-left"></i>
+              <span>Back</span>
+            </button>
+          {{else}}
+            <div></div>
+          {{/unless}}
+
+          {{#unless isLastPage}}
+            <button type="button" class="axyum-next axyum-btn axyum-btn-primary" data-action="next">
+              <span>Next</span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          {{else}}
+            {{#if (eq mode "create")}}
+              <button type="button" class="axyum-create axyum-btn axyum-btn-success" data-action="create">
+                <i class="fas fa-check-circle"></i>
+                <span>Create Character</span>
+              </button>
+            {{else}}
+              <button type="button" class="axyum-save axyum-btn axyum-btn-success" data-action="save">
+                <i class="fas fa-save"></i>
+                <span>Save Changes</span>
+              </button>
+            {{/if}}
+          {{/unless}}
+        </div>
+      </footer>
+    </div>
+
+    <!-- Right Sidebar: Live Character Sheet Preview -->
+    <aside class="axyum-preview-sidebar">
+      <div class="preview-header">
+        <h3><i class="fas fa-scroll"></i> Live Character Preview</h3>
+      </div>
+      <div class="preview-content">
+        {{> modules/ld-axyum/ui/sheet/axyum-character-preview-simple}}
+      </div>
+    </aside>
+
+  </div>
+</form>

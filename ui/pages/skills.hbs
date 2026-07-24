@@ -1,0 +1,74 @@
+<div class="axyum-page">
+  <h2 class="axyum-page-title">{{localize "LD_AXYUM.Pages.Skills"}}</h2>
+  <p class="axyum-page-description">
+    Select which skills your character is proficient in.
+    {{#if skillChoices.class.count}}
+      Your <strong>{{character.class.name}}</strong> grants <strong>{{skillChoices.class.count}}</strong> skill proficiencies.
+    {{else}}
+      You get <strong>3</strong> skill proficiencies from your class.
+    {{/if}}
+  </p>
+
+  {{#if character.class.name}}
+    <div class="skill-source-info">
+      {{#if skillChoices.class.count}}
+        <div class="skill-source">
+          <span class="source-label"><i class="fas fa-hat-wizard"></i> {{character.class.name}}</span>
+          <span class="source-count">{{skillChoices.class.count}} skills</span>
+          {{#if skillChoices.class.pool.length}}
+            <span class="source-pool">
+              {{#each skillChoices.class.pool}}<span class="pool-skill">{{this}}</span>{{/each}}
+            </span>
+          {{/if}}
+        </div>
+      {{/if}}
+      
+      {{#if skillChoices.background.count}}
+        <div class="skill-source">
+          <span class="source-label"><i class="fas fa-scroll"></i> {{character.background.name}}</span>
+          <span class="source-count">{{skillChoices.background.count}} skills</span>
+        </div>
+      {{/if}}
+      
+      <div class="skill-total">
+        <span class="total-label">Total Proficiencies:</span>
+        <span class="total-count">{{skillChoices.total}}</span>
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="axyum-skills-grid">
+    {{#each skillsList}}
+      <label class="axyum-skill-checkbox {{#if (includes ../character.skillProficiencies this.key)}}selected{{/if}}">
+        <div class="skill-checkbox-wrapper">
+          <input type="checkbox" 
+                 name="skillProficiencies" 
+                 value="{{this.key}}"
+                 {{#if (includes ../character.skillProficiencies this.key)}}checked{{/if}}>
+          <span class="checkbox-custom"></span>
+        </div>
+        <div class="skill-info">
+          <div class="skill-name">{{this.locKey}}</div>
+          <div class="skill-ability">
+            {{this.ability}} 
+            <span class="skill-modifier">
+              {{#if (gte this.modifier 0)}}+{{/if}}{{this.modifier}}
+            </span>
+          </div>
+        </div>
+      </label>
+    {{/each}}
+  </div>
+
+  <div class="proficiency-bonus-box">
+    <h3><i class="fas fa-certificate"></i> Proficiency Bonus</h3>
+    <p class="prof-value">
+      +<span id="profBonus">{{derivedStats.proficiencyBonus}}</span>
+      <span class="prof-note">(applies to selected skills)</span>
+    </p>
+  </div>
+
+  <div class="skill-tip">
+    <strong>Tip:</strong> Proficiency adds your Proficiency Bonus to skill checks you make with that skill. Select the skills your character is trained in!
+  </div>
+</div>

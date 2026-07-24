@@ -1,0 +1,121 @@
+{{!-- LD Axyum - Biography Page with Roll Buttons --}}
+<div class="axyum-page biography-page">
+  <h2 class="axyum-page-title"><i class="fas fa-book-open"></i> Biography</h2>
+  <p class="axyum-page-description">
+    Define your character's personality. Roll from your background's tables or write your own!
+  </p>
+
+  <div class="biography-layout">
+    
+    {{!-- Left Column: Personality --}}
+    <div class="biography-personality">
+      
+      {{!-- Personality Traits --}}
+      <div class="bio-field">
+        <div class="bio-field-header">
+          <label for="traits"><i class="fas fa-theater-masks"></i> Personality Traits</label>
+          <button type="button" class="roll-btn" data-action="rollTrait" data-trait="details.traits">
+            <i class="fas fa-dice-d20"></i> Roll
+          </button>
+        </div>
+        <textarea id="traits" name="details.traits" placeholder="Two personality traits that define how you act..." rows="3">{{character.details.traits}}</textarea>
+      </div>
+
+      {{!-- Ideals --}}
+      <div class="bio-field">
+        <div class="bio-field-header">
+          <label for="ideals"><i class="fas fa-balance-scale"></i> Ideals</label>
+          <button type="button" class="roll-btn" data-action="rollTrait" data-trait="details.ideals">
+            <i class="fas fa-dice-d20"></i> Roll
+          </button>
+        </div>
+        <textarea id="ideals" name="details.ideals" placeholder="What principles guide your decisions?" rows="3">{{character.details.ideals}}</textarea>
+      </div>
+
+      {{!-- Bonds --}}
+      <div class="bio-field">
+        <div class="bio-field-header">
+          <label for="bonds"><i class="fas fa-link"></i> Bonds</label>
+          <button type="button" class="roll-btn" data-action="rollTrait" data-trait="details.bonds">
+            <i class="fas fa-dice-d20"></i> Roll
+          </button>
+        </div>
+        <textarea id="bonds" name="details.bonds" placeholder="People, places, or things you care about..." rows="3">{{character.details.bonds}}</textarea>
+      </div>
+
+      {{!-- Flaws --}}
+      <div class="bio-field">
+        <div class="bio-field-header">
+          <label for="flaws"><i class="fas fa-skull"></i> Flaws</label>
+          <button type="button" class="roll-btn" data-action="rollTrait" data-trait="details.flaws">
+            <i class="fas fa-dice-d20"></i> Roll
+          </button>
+        </div>
+        <textarea id="flaws" name="details.flaws" placeholder="A vice, fear, or weakness..." rows="3">{{character.details.flaws}}</textarea>
+      </div>
+
+    </div>
+
+    {{!-- Right Column: Backstory & Physical Details --}}
+    <div class="biography-backstory">
+      
+      {{!-- Physical Characteristics Grid --}}
+      <div class="bio-field">
+        <div class="bio-field-header">
+          <label><i class="fas fa-id-card"></i> Physical Characteristics</label>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem;">
+          <div>
+            <label for="eyes" style="font-size: 0.8rem; color: #aaa;">Eyes</label>
+            <input type="text" id="eyes" name="details.eyes" value="{{character.details.eyes}}" placeholder="Eye color">
+          </div>
+          <div>
+            <label for="hair" style="font-size: 0.8rem; color: #aaa;">Hair</label>
+            <input type="text" id="hair" name="details.hair" value="{{character.details.hair}}" placeholder="Hair color/style">
+          </div>
+          <div>
+            <label for="skin" style="font-size: 0.8rem; color: #aaa;">Skin</label>
+            <input type="text" id="skin" name="details.skin" value="{{character.details.skin}}" placeholder="Skin tone">
+          </div>
+          <div>
+            <label for="height" style="font-size: 0.8rem; color: #aaa;">Height</label>
+            <input type="text" id="height" name="details.height" value="{{character.details.height}}" placeholder="e.g. 5'10&quot;">
+          </div>
+          <div>
+            <label for="weight" style="font-size: 0.8rem; color: #aaa;">Weight</label>
+            <input type="text" id="weight" name="details.weight" value="{{character.details.weight}}" placeholder="e.g. 170 lbs">
+          </div>
+          <div>
+            <label for="age" style="font-size: 0.8rem; color: #aaa;">Age</label>
+            <input type="text" id="age" name="details.age" value="{{character.details.age}}" placeholder="Age">
+          </div>
+          <div>
+            <label for="gender" style="font-size: 0.8rem; color: #aaa;">Gender</label>
+            <input type="text" id="gender" name="details.gender" value="{{character.details.gender}}" placeholder="Gender">
+          </div>
+          <div>
+            <label for="faith" style="font-size: 0.8rem; color: #aaa;">Faith</label>
+            <input type="text" id="faith" name="details.faith" value="{{character.details.faith}}" placeholder="Deity/Religion">
+          </div>
+        </div>
+      </div>
+
+      <div class="bio-field bio-field-full">
+        <div class="bio-field-header">
+          <label for="biography"><i class="fas fa-scroll"></i> Backstory</label>
+        </div>
+        <textarea id="biography" name="details.backstory" placeholder="Tell your character's story. Where did they come from? What shaped them? What drives them to adventure?" rows="10">{{character.details.backstory}}</textarea>
+      </div>
+
+      {{!-- Appearance --}}
+      <div class="bio-field">
+        <div class="bio-field-header">
+          <label for="appearance"><i class="fas fa-eye"></i> Appearance</label>
+        </div>
+        <textarea id="appearance" name="details.appearance" placeholder="Describe your character's physical appearance..." rows="3">{{character.details.appearance}}</textarea>
+      </div>
+
+    </div>
+
+  </div>
+</div>

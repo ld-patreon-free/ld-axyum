@@ -1,0 +1,239 @@
+/* Compendium Selector Modal */
+.compendium-selector-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--axyum-bg, #1a1a2e);
+  color: var(--axyum-text, #e0e0e0);
+}
+
+.compendium-selector-modal .tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid var(--axyum-primary, #4a90e2);
+  flex-wrap: wrap;
+}
+
+.compendium-selector-modal .tabs .item {
+  padding: 0.5rem 1rem;
+  background: rgba(74, 144, 226, 0.1);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--axyum-text, #e0e0e0);
+  text-decoration: none;
+}
+
+.compendium-selector-modal .tabs .item:hover {
+  background: rgba(74, 144, 226, 0.2);
+  border-color: var(--axyum-primary, #4a90e2);
+  transform: translateY(-2px);
+}
+
+.compendium-selector-modal .tabs .item.active {
+  background: var(--axyum-primary, #4a90e2);
+  color: white;
+  border-color: var(--axyum-primary, #4a90e2);
+}
+
+.compendium-selector-modal .tab-content-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.compendium-selector-modal .tab-content {
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.compendium-selector-modal .tab-content.active {
+  display: flex;
+}
+
+.compendium-selector-modal .tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+.compendium-selector-modal .tab-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--axyum-primary, #4a90e2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.compendium-selector-modal .button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.compendium-selector-modal .button-group button {
+  padding: 0.4rem 0.8rem;
+  background: rgba(74, 144, 226, 0.1);
+  border: 1px solid var(--axyum-primary, #4a90e2);
+  border-radius: 4px;
+  color: var(--axyum-text, #e0e0e0);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.compendium-selector-modal .button-group button:hover {
+  background: rgba(74, 144, 226, 0.3);
+  transform: translateY(-1px);
+}
+
+.compendium-selector-modal .compendium-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.compendium-selector-modal .compendium-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(74, 144, 226, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.compendium-selector-modal .compendium-item:hover {
+  background: rgba(74, 144, 226, 0.1);
+  border-color: var(--axyum-primary, #4a90e2);
+  transform: translateX(4px);
+}
+
+.compendium-selector-modal .compendium-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--axyum-primary, #4a90e2);
+}
+
+.compendium-selector-modal .compendium-icon {
+  font-size: 1.2rem;
+  color: var(--axyum-primary, #4a90e2);
+  width: 24px;
+  text-align: center;
+}
+
+.compendium-selector-modal .compendium-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--axyum-text, #e0e0e0);
+}
+
+.compendium-selector-modal .compendium-package {
+  font-size: 0.85rem;
+  color: var(--axyum-accent, #9b59b6);
+  background: rgba(155, 89, 182, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+
+.compendium-selector-modal .homebrew-badge {
+  font-size: 0.8rem;
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.compendium-selector-modal .homebrew-item {
+  border-left: 3px solid rgba(231, 76, 60, 0.5);
+}
+
+.compendium-selector-modal .no-compendia {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+  font-style: italic;
+}
+
+.compendium-selector-modal .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 2px solid var(--axyum-primary, #4a90e2);
+}
+
+.compendium-selector-modal .modal-footer button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.compendium-selector-modal .save-compendia {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+}
+
+.compendium-selector-modal .save-compendia:hover {
+  background: linear-gradient(135deg, #357abd, #2868a8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}
+
+.compendium-selector-modal .cancel-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--axyum-text, #e0e0e0);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.compendium-selector-modal .cancel-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Scrollbar styling */
+.compendium-selector-modal .tab-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.compendium-selector-modal .tab-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.compendium-selector-modal .tab-content::-webkit-scrollbar-thumb {
+  background: rgba(74, 144, 226, 0.5);
+  border-radius: 4px;
+}
+
+.compendium-selector-modal .tab-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 144, 226, 0.7);
+}

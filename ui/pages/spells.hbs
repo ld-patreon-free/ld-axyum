@@ -1,0 +1,136 @@
+<div class="axyum-page">
+  <h2 class="axyum-page-title">{{localize "LD_AXYUM.Pages.Spells"}}</h2>
+  
+  {{#if derivedStats.isSpellcaster}}
+    <p class="axyum-page-description">
+      {{localize "LD_AXYUM.Messages.SpellSelectionDescription"}}
+    </p>
+
+    {{#if characterData.class.name}}
+      <div style="margin-bottom: 2rem; padding: 1rem; background: rgba(74, 144, 226, 0.1); border-left: 4px solid var(--axyum-primary); border-radius: 4px;">
+        <p style="margin: 0; font-size: 0.9rem;">
+          <strong>{{characterData.class.name}} Level {{characterData.level}}</strong>
+          <br><span style="font-size: 0.85rem; color: var(--axyum-accent);">Cantrips: {{derivedStats.cantripCount}} | Max Spell Level: {{derivedStats.maxSpellLevel}}</span>
+        </p>
+      </div>
+    {{/if}}
+
+    <!-- Spell Slots Display -->
+    {{#if derivedStats.spellSlots}}
+      <div style="margin-bottom: 2rem; padding: 1rem; background: var(--axyum-secondary); border-radius: 6px;">
+        <h3 style="margin: 0 0 0.75rem; color: var(--axyum-primary); font-size: 0.95rem;">{{localize "LD_AXYUM.Spells.SpellSlots"}}</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 0.5rem;">
+          {{#each derivedStats.spellSlots}}
+            {{#if this}}
+              <div style="text-align: center; padding: 0.5rem; background: var(--axyum-dark); border-radius: 4px;">
+                <div style="font-weight: 600; color: var(--axyum-text);">Level {{@index}}</div>
+                <div style="font-size: 1.3rem; color: var(--axyum-primary);">{{this}}</div>
+              </div>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+
+    <!-- Cantrips Section -->
+    {{#if (lookup spellsByLevel 0)}}
+      <div style="margin-bottom: 2rem;">
+        <h3 style="margin: 0 0 0.75rem; color: var(--axyum-text); font-size: 1rem; border-bottom: 2px solid var(--axyum-primary); padding-bottom: 0.5rem;">
+          {{localize "LD_AXYUM.Spells.Cantrips"}}
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--axyum-accent); margin: 0 0 1rem;">{{localize "LD_AXYUM.Spells.SelectCantrips"}}</p>
+        <div class="axyum-spells-grid">
+          {{#each (lookup spellsByLevel 0)}}
+            <label class="axyum-spell-card">
+              <div class="spell-card-header">
+                <input type="checkbox" 
+                       name="cantrips" 
+                       value="{{this.id}}"
+                       {{#if (includes ../characterData.selectedCantrips this.id)}}checked{{/if}}>
+                <span class="spell-checkbox"></span>
+              </div>
+              <div class="spell-card-content">
+                <div class="spell-name">{{this.name}}</div>
+                <div class="spell-school" style="font-size: 0.8rem; color: var(--axyum-accent); text-transform: capitalize; margin-top: 0.25rem;">
+                  {{this.school}}
+                </div>
+              </div>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+
+    <!-- Leveled Spells Section -->
+    {{#each spellsByLevel}}
+      {{#if @index}}
+        <div style="margin-bottom: 2rem;">
+          <h3 style="margin: 0 0 0.75rem; color: var(--axyum-text); font-size: 1rem; border-bottom: 2px solid var(--axyum-primary); padding-bottom: 0.5rem;">
+            {{localize "LD_AXYUM.Spells.Level" level=@index}}
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--axyum-accent); margin: 0 0 1rem;">
+            {{#if (lookup ../characterData.class "preparedSpells")}}
+              {{localize "LD_AXYUM.Spells.SelectPrepared"}}
+            {{else}}
+              {{localize "LD_AXYUM.Spells.SelectKnown"}}
+            {{/if}}
+          </p>
+          {{#if this.length}}
+            <div class="axyum-spells-grid">
+              {{#each this}}
+                <label class="axyum-spell-card">
+                  <div class="spell-card-header">
+                    <input type="checkbox" 
+                           name="spells" 
+                           value="{{this.id}}"
+                           data-level="{{@../index}}"
+                           {{#if (includes ../../../characterData.selectedSpells this.id)}}checked{{/if}}>
+                    <span class="spell-checkbox"></span>
+                  </div>
+                  <div class="spell-card-content">
+                    <div class="spell-name">{{this.name}}</div>
+                    <div class="spell-school" style="font-size: 0.8rem; color: var(--axyum-accent); text-transform: capitalize; margin-top: 0.25rem;">
+                      {{this.school}}
+                    </div>
+                  </div>
+                </label>
+              {{/each}}
+            </div>
+          {{else}}
+            <p style="color: var(--axyum-accent); font-size: 0.9rem;">{{localize "LD_AXYUM.Spells.NoSpells"}}</p>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/each}}
+
+    <div style="margin-top: 2rem; padding: 1rem; background: var(--axyum-dark); border-radius: 6px; font-size: 0.85rem; color: var(--axyum-accent);">
+      <strong>Tip:</strong> Cantrips are at-will spells that don't require spell slots. Leveled spells consume spell slots when cast.
+    </div>
+  {{else}}
+    <div style="padding: 2rem; text-align: center;">
+      <p style="font-size: 1.1rem; color: var(--axyum-text); margin: 1rem 0;">
+        {{localize "LD_AXYUM.Spells.NonCaster"}}
+      </p>
+      <p style="font-size: 0.9rem; color: var(--axyum-accent);">
+        {{characterData.class.name}} characters do not have spellcasting ability.
+      </p>
+    </div>
+  {{/if}}
+</div>
+
+<script>
+  // Update spell selection counts
+  function updateSpellCounts() {
+    const cantrips = document.querySelectorAll('input[name="cantrips"]:checked').length;
+    const spells = document.querySelectorAll('input[name="spells"]:checked').length;
+
+  }
+
+  document.addEventListener('change', function(e) {
+    if (e.target.name === 'cantrips' || e.target.name === 'spells') {
+      updateSpellCounts();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', updateSpellCounts);
+</script>

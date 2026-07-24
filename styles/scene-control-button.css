@@ -1,0 +1,162 @@
+/* ==========================================================================
+   LD Axyum - Animated Scene Control Button Styles
+   
+   Standalone CSS file for the spinning, glowing scene control button.
+   Can be included in module.json "styles" array or imported manually.
+   ========================================================================== */
+
+/* Main button container */
+.ld-axyum-scene-control {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Spinning icon animation */
+.ld-axyum-scene-control i {
+  animation: axyum-spin 3s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(125, 211, 252, 0.6));
+}
+
+.ld-axyum-scene-control:hover i {
+  animation: axyum-spin 1s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(125, 211, 252, 1));
+}
+
+/* Pulse glow effect behind button */
+.ld-axyum-scene-control::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.3) 0%, transparent 70%);
+  animation: axyum-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Outer glow ring element */
+.ld-axyum-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.15) 0%, transparent 60%);
+  animation: axyum-glow-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Active/pressed state */
+.ld-axyum-scene-control[aria-pressed="true"] {
+  background: rgba(125, 211, 252, 0.2) !important;
+  box-shadow: inset 0 0 10px rgba(125, 211, 252, 0.3),
+              0 0 15px rgba(125, 211, 252, 0.4) !important;
+}
+
+.ld-axyum-scene-control[aria-pressed="true"] i {
+  color: #7dd3fc !important;
+}
+
+/* Hover state */
+.ld-axyum-scene-control:hover {
+  background: rgba(125, 211, 252, 0.15) !important;
+  box-shadow: 0 0 20px rgba(125, 211, 252, 0.5) !important;
+}
+
+.ld-axyum-scene-control:hover i {
+  color: #7dd3fc !important;
+  text-shadow: 0 0 10px rgba(125, 211, 252, 0.8);
+}
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
+
+/* Continuous spin */
+@keyframes axyum-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Inner pulse - scales and fades */
+@keyframes axyum-pulse {
+  0%, 100% { 
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Outer glow pulse - larger scale range */
+@keyframes axyum-glow-pulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* ==========================================================================
+   Alternative Color Themes (uncomment to use)
+   ========================================================================== */
+
+/* Blue Theme
+.ld-axyum-scene-control i {
+  filter: drop-shadow(0 0 4px rgba(65, 145, 255, 0.6));
+}
+.ld-axyum-scene-control:hover i {
+  filter: drop-shadow(0 0 8px rgba(65, 145, 255, 1));
+  color: #4191ff !important;
+}
+.ld-axyum-scene-control::before {
+  background: radial-gradient(circle, rgba(65, 145, 255, 0.3) 0%, transparent 70%);
+}
+.ld-axyum-glow {
+  background: radial-gradient(circle, rgba(65, 145, 255, 0.15) 0%, transparent 60%);
+}
+*/
+
+/* Purple Theme
+.ld-axyum-scene-control i {
+  filter: drop-shadow(0 0 4px rgba(165, 65, 255, 0.6));
+}
+.ld-axyum-scene-control:hover i {
+  filter: drop-shadow(0 0 8px rgba(165, 65, 255, 1));
+  color: #a541ff !important;
+}
+.ld-axyum-scene-control::before {
+  background: radial-gradient(circle, rgba(165, 65, 255, 0.3) 0%, transparent 70%);
+}
+.ld-axyum-glow {
+  background: radial-gradient(circle, rgba(165, 65, 255, 0.15) 0%, transparent 60%);
+}
+*/
+
+/* Gold Theme
+.ld-axyum-scene-control i {
+  filter: drop-shadow(0 0 4px rgba(255, 200, 65, 0.6));
+}
+.ld-axyum-scene-control:hover i {
+  filter: drop-shadow(0 0 8px rgba(255, 200, 65, 1));
+  color: #ffc841 !important;
+}
+.ld-axyum-scene-control::before {
+  background: radial-gradient(circle, rgba(255, 200, 65, 0.3) 0%, transparent 70%);
+}
+.ld-axyum-glow {
+  background: radial-gradient(circle, rgba(255, 200, 65, 0.15) 0%, transparent 60%);
+}
+*/

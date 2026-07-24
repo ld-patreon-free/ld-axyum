@@ -1,0 +1,82 @@
+{{!-- Export Character Modal --}}
+<div class="ld-modal export-modal" style="display: none;">
+  <div class="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: var(--axyum-background); border: 2px solid var(--axyum-primary); border-radius: 12px; padding: 2rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+      {{!-- Modal Header --}}
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h2 style="margin: 0; color: var(--axyum-primary);">{{localize "LD_AXYUM.Modal.ExportCharacter"}}</h2>
+        <button class="close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--axyum-dim);">×</button>
+      </div>
+
+      {{!-- Export Info --}}
+      <div style="padding: 1rem; background: rgba(74, 144, 226, 0.1); border-left: 4px solid var(--axyum-primary); border-radius: 6px; margin-bottom: 1.5rem;">
+        <p style="margin: 0; color: var(--axyum-text);">
+          <strong>{{characterName}}</strong> - Level {{characterLevel}} {{characterClass}}
+        </p>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: var(--axyum-dim);">
+          Export size: <span class="export-size">{{exportSize}} KB</span>
+        </p>
+      </div>
+
+      {{!-- Export Options --}}
+      <div style="margin-bottom: 1.5rem;">
+        <h3 style="margin: 0 0 1rem 0; color: var(--axyum-primary); font-size: 1.1rem;">{{localize "LD_AXYUM.Modal.ExportOptions"}}</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          {{!-- Download Option --}}
+          <div style="padding: 1rem; background: var(--axyum-secondary); border: 1px solid var(--axyum-dim); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;" class="export-option" data-action="download">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;"></div>
+            <div style="font-weight: 600; color: var(--axyum-text); margin-bottom: 0.25rem;">{{localize "LD_AXYUM.Modal.Download"}}</div>
+            <div style="font-size: 0.85rem; color: var(--axyum-dim);">Save as JSON file</div>
+          </div>
+
+          {{!-- Copy to Clipboard Option --}}
+          <div style="padding: 1rem; background: var(--axyum-secondary); border: 1px solid var(--axyum-dim); border-radius: 8px; cursor: pointer; transition: all 0.3s ease;" class="export-option" data-action="copy">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;"></div>
+            <div style="font-weight: 600; color: var(--axyum-text); margin-bottom: 0.25rem;">{{localize "LD_AXYUM.Modal.CopyClipboard"}}</div>
+            <div style="font-size: 0.85rem; color: var(--axyum-dim);">Copy JSON to clipboard</div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Export Data Summary --}}
+      <div style="margin-bottom: 1.5rem;">
+        <h3 style="margin: 0 0 1rem 0; color: var(--axyum-primary); font-size: 1.1rem;">{{localize "LD_AXYUM.Modal.DataIncluded"}}</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.9rem;">
+          <div style="padding: 0.75rem; background: var(--axyum-secondary); border-radius: 6px;">
+            <span style="color: var(--axyum-primary); font-weight: 600;">✓</span>
+            <span style="color: var(--axyum-text); margin-left: 0.5rem;">Class & Multiclass</span>
+          </div>
+          <div style="padding: 0.75rem; background: var(--axyum-secondary); border-radius: 6px;">
+            <span style="color: var(--axyum-primary); font-weight: 600;">✓</span>
+            <span style="color: var(--axyum-text); margin-left: 0.5rem;">ASI Selections</span>
+          </div>
+          <div style="padding: 0.75rem; background: var(--axyum-secondary); border-radius: 6px;">
+            <span style="color: var(--axyum-primary); font-weight: 600;">✓</span>
+            <span style="color: var(--axyum-text); margin-left: 0.5rem;">Feats & Features</span>
+          </div>
+          <div style="padding: 0.75rem; background: var(--axyum-secondary); border-radius: 6px;">
+            <span style="color: var(--axyum-primary); font-weight: 600;">✓</span>
+            <span style="color: var(--axyum-text); margin-left: 0.5rem;">Spell Selections</span>
+          </div>
+          <div style="padding: 0.75rem; background: var(--axyum-secondary); border-radius: 6px;">
+            <span style="color: var(--axyum-primary); font-weight: 600;">✓</span>
+            <span style="color: var(--axyum-text); margin-left: 0.5rem;">Homebrew Items</span>
+          </div>
+          <div style="padding: 0.75rem; background: var(--axyum-secondary); border-radius: 6px;">
+            <span style="color: var(--axyum-primary); font-weight: 600;">✓</span>
+            <span style="color: var(--axyum-text); margin-left: 0.5rem;">Conditions & Notes</span>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Footer --}}
+      <div style="display: flex; gap: 1rem; justify-content: flex-end; padding-top: 1rem; border-top: 1px solid var(--axyum-dim);">
+        <button class="close-modal" style="padding: 0.75rem 1.5rem; background: var(--axyum-secondary); border: 1px solid var(--axyum-dim); border-radius: 6px; color: var(--axyum-text); cursor: pointer; font-weight: 600;">
+          {{localize "LD_AXYUM.Modal.Close"}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

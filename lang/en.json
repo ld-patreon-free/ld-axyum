@@ -1,0 +1,187 @@
+{
+  "LD_AXYUM": {
+    "ButtonText": "New Character (Axyum)",
+    "AppTitle": "Character Creator (Axyum)",
+    "Settings": {
+      "EnabledCompendia": {
+        "Name": "Enabled Compendia",
+        "Hint": "Select which compendia to use for character creation"
+      },
+      "VariantRules": {
+        "Name": "Enable Variant Rules",
+        "Hint": "Allow Tasha's Cauldron and DMG optional rules"
+      },
+      "Theme": {
+        "Name": "UI Theme",
+        "Hint": "Choose visual theme for wizard and sheet"
+      }
+    },
+    "Pages": {
+      "Welcome": "Welcome",
+      "Role": "Character Role",
+      "Class": "Class Selection",
+      "Multiclass": "Multiclass Selection",
+      "Race": "Race Selection",
+      "Background": "Background",
+      "Abilities": "Ability Scores",
+      "Skills": "Skills & Proficiencies",
+      "Equipment": "Equipment & Items",
+      "Spells": "Spells & Abilities",
+      "Feats": "Feats & Traits",
+      "Details": "Character Details",
+      "Biography": "Biography",
+      "Summary": "Character Summary"
+    },
+    "Roles": {
+      "Warrior": "Warrior - Strong melee combatants",
+      "Mage": "Mage - Powerful spellcasters",
+      "Rogue": "Rogue - Sneaky and cunning",
+      "Cleric": "Cleric - Holy warriors and healers",
+      "Bard": "Bard - Charismatic performers",
+      "Paladin": "Paladin - Oath-bound champions",
+      "Ranger": "Ranger - Wilderness hunters",
+      "Warlock": "Warlock - Pact-bound magic users",
+      "Monk": "Monk - Martial artists",
+      "Sorcerer": "Sorcerer - Natural spellcasters",
+      "Druid": "Druid - Nature spellcasters",
+      "Barbarian": "Barbarian - Primal rage users"
+    },
+    "Abilities": {
+      "Strength": "Strength",
+      "Dexterity": "Dexterity",
+      "Constitution": "Constitution",
+      "Intelligence": "Intelligence",
+      "Wisdom": "Wisdom",
+      "Charisma": "Charisma"
+    },
+    "Skills": {
+      "Acrobatics": "Acrobatics",
+      "AnimalHandling": "Animal Handling",
+      "Arcana": "Arcana",
+      "Athletics": "Athletics",
+      "Deception": "Deception",
+      "History": "History",
+      "Insight": "Insight",
+      "Intimidation": "Intimidation",
+      "Investigation": "Investigation",
+      "Medicine": "Medicine",
+      "Nature": "Nature",
+      "Perception": "Perception",
+      "Performance": "Performance",
+      "Persuasion": "Persuasion",
+      "Religion": "Religion",
+      "SleightOfHand": "Sleight of Hand",
+      "Stealth": "Stealth",
+      "Survival": "Survival"
+    },
+    "Equipment": {
+      "Weapons": "Weapons",
+      "Armor": "Armor",
+      "AdventuringGear": "Adventuring Gear",
+      "ToolsAndInstruments": "Tools & Instruments",
+      "Ammunition": "Ammunition",
+      "SelectBy": "Filter by",
+      "AllTypes": "All Types",
+      "Price": "Price",
+      "Weight": "Weight",
+      "Rarity": "Rarity",
+      "NoItems": "No items found. Adjust your filters."
+    },
+    "Spells": {
+      "Cantrips": "Cantrips (Unlimited)",
+      "Level": "Level {{level}} Spells",
+      "NoSpells": "No spells available for your class",
+      "SpellSlots": "Spell Slots",
+      "Known": "Known Spells",
+      "Prepared": "Prepared Spells",
+      "SelectCantrips": "Select your cantrips. You can cast these at will.",
+      "SelectKnown": "Select spells your character knows. You can cast from this list using your spell slots.",
+      "SelectPrepared": "Select spells to prepare. You can cast prepared spells using your spell slots.",
+      "NonCaster": "Your character class does not cast spells."
+    },
+    "Buttons": {
+      "Previous": "Previous",
+      "Next": "Next",
+      "CreateCharacter": "Create Character",
+      "SaveChanges": "Save Changes",
+      "EditPage": "Edit Page",
+      "Edit": "Edit",
+      "Save": "Save",
+      "Cancel": "Cancel",
+      "Wizard": "Re-run Wizard"
+    },
+    "Messages": {
+      "CharacterCreated": "Character created successfully!",
+      "CharacterUpdated": "Character updated successfully!",
+      "ValidationError": "Please correct the errors before continuing",
+      "LoadingCompendia": "Loading compendia...",
+      "SelectOption": "Please select an option to continue",
+      "Selected": "Selected",
+      "EquipmentDescription": "Choose your starting equipment. Your class provides options based on its starting equipment packages.",
+      "SpellSelectionDescription": "Select your spells and cantrips. Your class and level determine how many spells you can choose.",
+      "MulticlassDescription": "Choose whether this is a single-class or multiclass character. Multiclass characters have levels in multiple classes.",
+      "MulticlassHint": "Check this box to add multiple classes to your character. Each class can have 1-20 levels, with a total of 20 levels maximum.",
+      "NoClassesSelected": "No classes selected yet. Click 'Add Class' to get started.",
+      "NoFeatsSelected": "No feats selected yet.",
+      "LoadingSpellSlots": "Calculating spell slots...",
+      "SpellSlotPreview": "Spell slots will be calculated based on your class levels."
+    },
+    "Labels": {
+      "MulticlassCharacter": "This is a Multiclass Character",
+      "SelectedClasses": "Your Classes",
+      "AddClass": "Add Class",
+      "Remove": "Remove",
+      "TotalLevel": "Total Level",
+      "SelectClassToAdd": "Select a class to add",
+      "SpellSlotPreview": "Spell Slot Preview",
+      "ASIAndFeats": "Ability Score Improvements & Feats",
+      "SelectFeat": "Select a Feat",
+      "SelectedFeats": "Selected Feats"
+    },
+    "Sheet": {
+      "Title": "LD Axyum Character Sheet",
+      "Tabs": {
+        "Stats": "Stats",
+        "Details": "Details",
+        "Features": "Features",
+        "Equipment": "Equipment",
+        "Spells": "Spells",
+        "Classes": "Classes"
+      },
+      "HitPoints": "Hit Points",
+      "ArmorClass": "Armor Class",
+      "ProficiencyBonus": "Proficiency Bonus",
+      "Speed": "Speed",
+      "AbilityScores": "Ability Scores",
+      "SkillProficiencies": "Skill Proficiencies",
+      "Alignment": "Alignment",
+      "Appearance": "Appearance",
+      "Traits": "Personality Traits",
+      "Ideals": "Ideals",
+      "Bonds": "Bonds",
+      "Flaws": "Flaws",
+      "Biography": "Biography",
+      "Weapons": "Weapons",
+      "Armor": "Armor",
+      "Gear": "Gear & Loot",
+      "Cantrips": "Cantrips",
+      "Level": "Level",
+      "NoFeatures": "No class features yet",
+      "NoSpells": "No spells known"
+    },
+    "Phase9": {
+      "QuantumPortal": "Quantum Portal",
+      "PopoutWindow": "Popout Window",
+      "RestoreWindow": "Restore Window",
+      "MinimizeWindow": "Minimize Window",
+      "MaximizeWindow": "Maximize Window",
+      "CloseWindow": "Close Window",
+      "PortalSettings": "Portal Settings",
+      "EnableQuantumPortal": "Enable Quantum Portal",
+      "QuantumPortalHint": "Allow windows to be detached and reopened from the Quantum Portal system",
+      "WindowManagement": "Window Management",
+      "SaveWindowPositions": "Save Window Positions",
+      "SaveWindowPositionsHint": "Automatically save and restore window positions between sessions"
+    }
+  }
+}

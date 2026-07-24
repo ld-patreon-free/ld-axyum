@@ -1,0 +1,76 @@
+<div class="axyum-page">
+  <h2 class="axyum-page-title">Character Summary</h2>
+  <p class="axyum-page-description">
+    Review your character before creation. You can edit any field by clicking the "Edit" button next to it.
+  </p>
+
+  {{!-- Character Name - Required Field --}}
+  <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(253, 203, 110, 0.1); border-radius: 8px; border: 2px solid var(--axyum-accent);">
+    <label for="char-name-final" style="display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--axyum-accent);">
+      <i class="fas fa-user"></i> Character Name <span style="color: #e74c3c;">*</span>
+    </label>
+    <input type="text" id="char-name-final" name="name" value="{{characterData.name}}" 
+           placeholder="Enter your character's name (required)" 
+           style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 2px solid var(--axyum-border); border-radius: 6px;">
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+    <!-- Basic Info -->
+    <div class="axyum-summary-card">
+      <h3>Basic Information</h3>
+      <p><strong>Class:</strong> {{#if characterData.class.name}}{{characterData.class.name}} (Level {{characterData.class.level}}){{else}}<em style="color:#e74c3c;">Not selected</em>{{/if}}</p>
+      <p><strong>Race:</strong> {{#if characterData.race.name}}{{characterData.race.name}}{{else}}<em style="color:#e74c3c;">Not selected</em>{{/if}}</p>
+      <p><strong>Background:</strong> {{#if characterData.background.name}}{{characterData.background.name}}{{else}}<em style="color:#e74c3c;">Not selected</em>{{/if}}</p>
+      <p><strong>Alignment:</strong> {{characterData.details.alignment}}</p>
+    </div>
+
+    <!-- Ability Scores -->
+    <div class="axyum-summary-card">
+      <h3>Ability Scores</h3>
+      <p><strong>STR:</strong> {{characterData.abilities.str}} ({{derivedStats.abilityModifiers.str}})</p>
+      <p><strong>DEX:</strong> {{characterData.abilities.dex}} ({{derivedStats.abilityModifiers.dex}})</p>
+      <p><strong>CON:</strong> {{characterData.abilities.con}} ({{derivedStats.abilityModifiers.con}})</p>
+      <p><strong>INT:</strong> {{characterData.abilities.int}} ({{derivedStats.abilityModifiers.int}})</p>
+      <p><strong>WIS:</strong> {{characterData.abilities.wis}} ({{derivedStats.abilityModifiers.wis}})</p>
+      <p><strong>CHA:</strong> {{characterData.abilities.cha}} ({{derivedStats.abilityModifiers.cha}})</p>
+    </div>
+
+    <!-- Derived Stats -->
+    <div class="axyum-summary-card">
+      <h3>Derived Statistics</h3>
+      <p><strong>Hit Points:</strong> {{derivedStats.hitPoints}}</p>
+      <p><strong>Armor Class:</strong> {{derivedStats.armorClass}}</p>
+      <p><strong>Proficiency Bonus:</strong> +{{derivedStats.proficiencyBonus}}</p>
+      <p><strong>Initiative:</strong> {{derivedStats.abilityModifiers.dex}}</p>
+      <p><strong>Speed:</strong> {{derivedStats.speed}} ft.</p>
+      <p><strong>Passive Perception:</strong> {{derivedStats.passivePerception}}</p>
+    </div>
+
+    <!-- Biography Preview -->
+    <div class="axyum-summary-card">
+      <h3>Biography Preview</h3>
+      <p><strong>Traits:</strong> {{#if characterData.details.traits}}{{characterData.details.traits}}{{else}}<em>Not set</em>{{/if}}</p>
+      <p><strong>Ideals:</strong> {{#if characterData.details.ideals}}{{characterData.details.ideals}}{{else}}<em>Not set</em>{{/if}}</p>
+      <p><strong>Bonds:</strong> {{#if characterData.details.bonds}}{{characterData.details.bonds}}{{else}}<em>Not set</em>{{/if}}</p>
+      <p><strong>Flaws:</strong> {{#if characterData.details.flaws}}{{characterData.details.flaws}}{{else}}<em>Not set</em>{{/if}}</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(253, 203, 110, 0.1); border-left: 4px solid var(--axyum-accent); border-radius: 6px;">
+    <h4 style="margin-top: 0; color: var(--axyum-accent);">Ready to Create?</h4>
+    <p style="margin: 0;">
+      Review the summary above. If everything looks correct, click "Create Character" to add this character to your campaign!
+    </p>
+  </div>
+
+  <!-- Hidden inputs to persist all data -->
+  <input type="hidden" name="name" value="{{characterData.name}}">
+  <input type="hidden" name="class.id" value="{{characterData.class.id}}">
+  <input type="hidden" name="class.name" value="{{characterData.class.name}}">
+  <input type="hidden" name="class.level" value="{{characterData.class.level}}">
+  <input type="hidden" name="race.id" value="{{characterData.race.id}}">
+  <input type="hidden" name="race.name" value="{{characterData.race.name}}">
+  <input type="hidden" name="background.id" value="{{characterData.background.id}}">
+  <input type="hidden" name="background.name" value="{{characterData.background.name}}">
+  <input type="hidden" name="details.alignment" value="{{characterData.details.alignment}}">
+</div>

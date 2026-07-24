@@ -1,0 +1,231 @@
+<div class="compendium-selector-modal">
+  <div class="tabs">
+    <a class="item" data-tab="classes" data-action="switchTab">
+      <i class="fas fa-user-shield"></i> Classes
+    </a>
+    <a class="item" data-tab="races" data-action="switchTab">
+      <i class="fas fa-users"></i> Races
+    </a>
+    <a class="item" data-tab="backgrounds" data-action="switchTab">
+      <i class="fas fa-scroll"></i> Backgrounds
+    </a>
+    <a class="item" data-tab="spells" data-action="switchTab">
+      <i class="fas fa-wand-magic-sparkles"></i> Spells
+    </a>
+    <a class="item" data-tab="equipment" data-action="switchTab">
+      <i class="fas fa-suitcase"></i> Equipment
+    </a>
+    <a class="item" data-tab="feats" data-action="switchTab">
+      <i class="fas fa-star"></i> Feats
+    </a>
+    {{#if hasOther}}
+    <a class="item" data-tab="other" data-action="switchTab">
+      <i class="fas fa-folder"></i> Other
+    </a>
+    {{/if}}
+  </div>
+
+  <div class="tab-content-wrapper">
+    <!-- Classes Tab -->
+    <div class="tab-content" data-tab="classes">
+      <div class="tab-header">
+        <h3><i class="fas fa-user-shield"></i> Class Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="classes">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="classes">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.classes}}
+          <label class="compendium-item {{#if this.isHomebrew}}homebrew-item{{/if}}">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+            {{#if this.isHomebrew}}<span class="homebrew-badge"><i class="fas fa-scroll"></i> Custom</span>{{/if}}
+          </label>
+        {{else}}
+          <p class="no-compendia">No class compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Races Tab -->
+    <div class="tab-content" data-tab="races">
+      <div class="tab-header">
+        <h3><i class="fas fa-users"></i> Race/Species Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="races">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="races">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.races}}
+          <label class="compendium-item">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+          </label>
+        {{else}}
+          <p class="no-compendia">No race compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Backgrounds Tab -->
+    <div class="tab-content" data-tab="backgrounds">
+      <div class="tab-header">
+        <h3><i class="fas fa-scroll"></i> Background Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="backgrounds">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="backgrounds">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.backgrounds}}
+          <label class="compendium-item">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+          </label>
+        {{else}}
+          <p class="no-compendia">No background compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Spells Tab -->
+    <div class="tab-content" data-tab="spells">
+      <div class="tab-header">
+        <h3><i class="fas fa-wand-magic-sparkles"></i> Spell Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="spells">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="spells">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.spells}}
+          <label class="compendium-item">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+          </label>
+        {{else}}
+          <p class="no-compendia">No spell compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Equipment Tab -->
+    <div class="tab-content" data-tab="equipment">
+      <div class="tab-header">
+        <h3><i class="fas fa-suitcase"></i> Equipment Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="equipment">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="equipment">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.equipment}}
+          <label class="compendium-item">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+          </label>
+        {{else}}
+          <p class="no-compendia">No equipment compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Feats Tab -->
+    <div class="tab-content" data-tab="feats">
+      <div class="tab-header">
+        <h3><i class="fas fa-star"></i> Feat Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="feats">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="feats">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.feats}}
+          <label class="compendium-item">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+          </label>
+        {{else}}
+          <p class="no-compendia">No feat compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Other Tab -->
+    {{#if hasOther}}
+    <div class="tab-content" data-tab="other">
+      <div class="tab-header">
+        <h3><i class="fas fa-folder"></i> Other Compendia</h3>
+        <div class="button-group">
+          <button type="button" data-action="selectAll" data-tab="other">
+            <i class="fas fa-check-double"></i> Select All
+          </button>
+          <button type="button" data-action="deselectAll" data-tab="other">
+            <i class="fas fa-times"></i> Deselect All
+          </button>
+        </div>
+      </div>
+      <div class="compendium-list">
+        {{#each compendia.other}}
+          <label class="compendium-item">
+            <input type="checkbox" data-pack-id="{{this.id}}" {{#if this.enabled}}checked{{/if}} />
+            <span class="compendium-icon"><i class="{{this.icon}}"></i></span>
+            <span class="compendium-name">{{this.name}}</span>
+            <span class="compendium-package">{{this.package}}</span>
+          </label>
+        {{else}}
+          <p class="no-compendia">No other compendia found</p>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- Footer Buttons -->
+  <div class="modal-footer">
+    <button type="button" data-action="saveCompendia">
+      <i class="fas fa-save"></i> Save Settings
+    </button>
+    <button type="button" data-action="cancelSelector">
+      <i class="fas fa-times"></i> Cancel
+    </button>
+  </div>
+</div>

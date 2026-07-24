@@ -1,0 +1,182 @@
+<div class="axyum-page">
+  <h2 class="axyum-page-title">{{localize "LD_AXYUM.Pages.Multiclass"}}</h2>
+  <p class="axyum-page-description">
+    {{localize "LD_AXYUM.Messages.MulticlassDescription"}}
+  </p>
+
+  <!-- Toggle: Single Class vs Multiclass -->
+  <div style="margin-bottom: 2rem; padding: 1rem; background: var(--axyum-secondary); border-radius: 6px;">
+    <label style="display: flex; align-items: center; cursor: pointer;">
+      <input type="radio" name="isMulticlass" value="false" {{#unless characterData.isMulticlass}}checked{{/unless}} 
+             style="margin-right: 0.5rem; cursor: pointer;">
+      <span style="margin-right: 2rem;">Single Class</span>
+    </label>
+    <label style="display: flex; align-items: center; cursor: pointer;">
+      <input type="radio" name="isMulticlass" value="true" {{#if characterData.isMulticlass}}checked{{/if}} 
+             style="margin-right: 0.5rem; cursor: pointer;">
+      <span><strong>{{localize "LD_AXYUM.Labels.MulticlassCharacter"}}</strong></span>
+    </label>
+    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: var(--axyum-dim);">
+      {{localize "LD_AXYUM.Messages.MulticlassHint"}}
+    </p>
+  </div>
+
+  <!-- Single Class Level Selection -->
+  {{#unless characterData.isMulticlass}}
+  <div class="axyum-single-class-section" style="margin-bottom: 2rem; padding: 1rem; background: var(--axyum-secondary); border-radius: 6px; border-left: 3px solid var(--axyum-primary);">
+    <h3 style="margin-top: 0; margin-bottom: 1rem;">{{characterData.class.name}}</h3>
+    <div style="display: flex; align-items: center;">
+      <label for="single-class-level" style="margin-right: 1rem; font-weight: bold;">Level:</label>
+      <input type="number" id="single-class-level" name="class.level" value="{{characterData.class.level}}" min="1" max="20" style="width: 60px; padding: 0.3rem; border: 1px solid #666; border-radius: 3px; color: #000; background: #fff;">
+    </div>
+  </div>
+  {{/unless}}
+
+  <!-- Class Selection (only visible if multiclass enabled) -->
+  {{#if characterData.isMulticlass}}
+  <div class="axyum-multiclass-section">
+    <h3 style="margin-bottom: 1rem;">{{localize "LD_AXYUM.Labels.SelectedClasses"}}</h3>
+    
+    {{#if multiclassData.classList}}
+      <div class="axyum-classes-list" style="margin-bottom: 1.5rem;">
+        {{#each multiclassData.classList}}
+          <div class="axyum-class-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--axyum-secondary); color: var(--axyum-text-dark); border-radius: 4px; border-left: 3px solid var(--axyum-primary);">
+            <div style="flex: 1;">
+              <strong>{{this.name}}</strong>
+              <span style="margin-left: 1rem; opacity: 0.9;">Level <input type="number" name="classLevel" data-class-index="{{this.index}}" value="{{this.level}}" min="1" max="20" style="width: 50px; padding: 0.3rem; border: 1px solid #666; border-radius: 3px; color: #000; background: #fff;"></span>
+              {{#if this.subclass}}
+                <div style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">
+                  Subclass: {{this.subclass}}
+                </div>
+              {{/if}}
+            </div>
+            <button type="button" class="axyum-remove-class axyum-btn axyum-btn-danger" data-class-index="{{this.index}}"
+                    style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+              {{localize "LD_AXYUM.Labels.Remove"}}
+            </button>
+          </div>
+        {{else}}
+          <p style="color: var(--axyum-dim); font-style: italic;">
+            {{localize "LD_AXYUM.Messages.NoClassesSelected"}}
+          </p>
+        {{/each}}
+      </div>
+
+      <!-- Total Level Display -->
+      {{#if multiclassData.classList}}
+        <div style="padding: 1rem; margin-bottom: 1rem; background: var(--axyum-primary); color: white; border-radius: 4px; text-align: center;">
+          <strong>{{localize "LD_AXYUM.Labels.TotalLevel"}}:</strong> <span id="multiclass-total-level">{{multiclassData.totalLevel}}</span> / {{multiclassData.maxLevel}}
+        </div>
+      {{/if}}
+    {{/if}}
+
+    <!-- Add Class Section -->
+    <div style="margin-bottom: 1.5rem;">
+      <label style="display: block; margin-bottom: 0.5rem;"><strong>{{localize "LD_AXYUM.Labels.SelectClassToAdd"}}</strong></label>
+      <div style="display: flex; gap: 0.5rem;">
+        <select name="classToAdd" style="flex: 1; padding: 0.5rem; border: 1px solid #999; border-radius: 3px;">
+          <option value="">-- Select a class --</option>
+          {{#each classes}}
+            <option value="{{this.id}}">{{this.name}} (d{{this.hitDie}}{{#if this.spellcasting}}, Spellcaster{{/if}})</option>
+          {{/each}}
+        </select>
+        <button type="button" class="axyum-add-class axyum-btn axyum-btn-primary">
+          + {{localize "LD_AXYUM.Labels.AddClass"}}
+        </button>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+  <!-- Spell Slot Preview (if spellcaster and multiclass) -->
+  {{#if multiclassData.spellPreview}}
+    <div class="spell-slot-preview" style="margin-top: 1.5rem; padding: 1rem; background: var(--axyum-secondary); border-radius: 6px;">
+      <h4 style="margin-top: 0;">{{localize "LD_AXYUM.Labels.SpellSlotPreview"}}</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 0.5rem; font-size: 0.85rem;">
+        {{#each multiclassData.spellPreview}}
+          <div style="text-align: center; padding: 0.5rem; background: var(--axyum-primary); color: white; border-radius: 3px;">
+            <strong>L{{this.level}}</strong><br>{{this.slots}} slot{{#if (ne this.slots 1)}}s{{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  <!-- Hidden inputs for form submission -->
+  <input type="hidden" name="isMulticlass" value="{{characterData.isMulticlass}}">
+  {{#each characterData.classes}}
+    <input type="hidden" name="classes[{{@index}}][id]" value="{{this.id}}">
+    <input type="hidden" name="classes[{{@index}}][name]" value="{{this.name}}">
+    <input type="hidden" name="classes[{{@index}}][level]" value="{{this.level}}">
+    {{#if this.subclass}}
+      <input type="hidden" name="classes[{{@index}}][subclass]" value="{{this.subclass}}">
+    {{/if}}
+  {{/each}}
+</div>
+
+<style>
+  .axyum-multiclass-section {
+    margin: 1.5rem 0;
+  }
+
+  .axyum-classes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .axyum-class-item {
+    transition: all 0.2s ease;
+  }
+
+  .axyum-class-item:hover {
+    background: var(--axyum-primary);
+    color: white;
+  }
+
+  .axyum-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .axyum-selection-card {
+    padding: 1rem;
+    background: var(--axyum-secondary);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .axyum-selection-card:hover {
+    border-color: var(--axyum-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .axyum-selection-card.selected {
+    background: var(--axyum-primary);
+    color: white;
+    border-color: var(--axyum-primary);
+  }
+
+  .axyum-selection-card i {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .axyum-selection-card-title {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .axyum-selection-card-desc {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+</style>

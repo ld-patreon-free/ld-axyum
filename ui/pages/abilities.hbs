@@ -1,0 +1,138 @@
+{{!-- LD Axyum - Interactive Ability Scores with Drag & Drop --}}
+<div class="axyum-page ability-scores-page">
+  <h2 class="axyum-page-title">Ability Scores</h2>
+  <p class="axyum-page-description">
+    Roll for each ability individually and see the dice animation, or use standard array/point buy methods.
+  </p>
+
+  <div class="ability-method-buttons">
+    <button type="button" class="axyum-btn axyum-btn-primary" data-action="useStandardArray">
+      <i class="fas fa-list-ol"></i> Standard Array (15, 14, 13, 12, 10, 8)
+    </button>
+    <button type="button" class="axyum-btn axyum-btn-secondary" data-action="usePointBuy">
+      <i class="fas fa-calculator"></i> Point Buy
+    </button>
+    <button type="button" class="axyum-btn axyum-btn-secondary" data-action="rollAllAbilities">
+      <i class="fas fa-dice-d20"></i> Roll All (4d6 drop lowest)
+    </button>
+    <button type="button" class="axyum-btn axyum-btn-ghost" data-action="resetAbilities">
+      <i class="fas fa-redo"></i> Reset All
+    </button>
+  </div>
+
+  <div class="abilities-interactive-container">
+    
+    {{!-- Roll Pool Area --}}
+    <div class="dice-roll-pool">
+      <h3><i class="fas fa-dice-d20 fa-spin-slow"></i> Roll Your Scores</h3>
+      <p class="roll-instructions">Click each ability to roll 4d6 (drop lowest). Drag results to assign.</p>
+      
+      <div class="roll-slots">
+        {{#each abilities as |ability|}}
+          <div class="roll-slot {{#if (lookup ../rolledScores ability.key)}}has-roll{{/if}}" data-ability="{{ability.key}}">
+            <div class="ability-name-label">{{ability.name}}</div>
+            
+            {{#if (lookup ../rolledScores ability.key)}}
+              {{!-- Show rolled result - draggable --}}
+              <div class="rolled-result draggable-score" 
+                   draggable="true" 
+                   data-score="{{lookup ../rolledScores ability.key}}" 
+                   data-source-ability="{{ability.key}}">
+                <div class="score-value">{{lookup ../rolledScores ability.key}}</div>
+                <div class="dice-breakdown">{{lookup ../diceBreakdowns ability.key}}</div>
+              </div>
+              <button type="button" class="reroll-btn" data-action="rollAbility" data-ability="{{ability.key}}">
+                <i class="fas fa-dice"></i> Re-roll
+              </button>
+            {{else}}
+              {{!-- Show roll button --}}
+              <button type="button" class="roll-ability-btn pulse-glow" data-action="rollAbility" data-ability="{{ability.key}}">
+                <i class="fas fa-dice-d6"></i>
+                <span>Roll</span>
+              </button>
+              <div class="dice-animation-container" id="dice-anim-{{ability.key}}">
+                <div class="dice-tumble">
+                  <i class="fas fa-dice-d6 die-1"></i>
+                  <i class="fas fa-dice-d6 die-2"></i>
+                  <i class="fas fa-dice-d6 die-3"></i>
+                  <i class="fas fa-dice-d6 die-4"></i>
+                </div>
+              </div>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+      
+      {{!-- Rolled Pool for unassigned scores --}}
+      <div class="rolled-pool" id="rolled-pool">
+        <h4><i class="fas fa-hand-holding"></i> Unassigned Scores</h4>
+        <div class="pool-scores">
+          {{#each rolledPool}}
+            <div class="pool-score draggable-score" draggable="true" data-score="{{this.value}}" data-pool-index="{{@index}}">
+              <span class="score-num">{{this.value}}</span>
+              <span class="score-breakdown">{{this.breakdown}}</span>
+            </div>
+          {{else}}
+            <p class="empty-pool">Roll abilities above or use a preset method</p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{!-- Assignment Area --}}
+    <div class="ability-assignment-area">
+      <h3><i class="fas fa-bullseye"></i> Assign Your Scores</h3>
+      <p class="assignment-instructions">Drag scores and drop onto abilities, or click to quick-assign.</p>
+      
+      <div class="ability-drop-zones">
+        {{#each abilities as |ability|}}
+          <div class="ability-drop-zone {{#if (lookup ../character.abilities ability.key)}}filled{{/if}}" 
+               data-ability="{{ability.key}}"
+               data-action="assignScoreClick">
+            <div class="zone-header">
+              <span class="ability-abbr">{{ability.name}}</span>
+              <span class="ability-full">{{ability.label}}</span>
+            </div>
+            
+            <div class="zone-content">
+              {{#if (lookup ../character.abilities ability.key)}}
+                <div class="assigned-score pop-in draggable-score" 
+                     draggable="true" 
+                     data-score="{{lookup ../character.abilities ability.key}}" 
+                     data-source-ability="{{ability.key}}"
+                     data-from-assigned="true">
+                  <span class="score-big">{{lookup ../character.abilities ability.key}}</span>
+                  <span class="modifier">({{abilityMod (lookup ../character.abilities ability.key)}})</span>
+                </div>
+                <button type="button" class="remove-score-btn" data-action="unassignScore" data-ability="{{ability.key}}">
+                  <i class="fas fa-times"></i>
+                </button>
+              {{else}}
+                <div class="drop-target">
+                  <i class="fas fa-crosshairs"></i>
+                  <span>Drop Here</span>
+                </div>
+              {{/if}}
+            </div>
+            
+            <input type="hidden" name="abilities.{{ability.key}}" value="{{lookup ../character.abilities ability.key}}">
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+  </div>
+
+  {{!-- Summary Stats --}}
+  <div class="ability-summary">
+    <div class="summary-stat">
+      <span class="summary-label">Total Score:</span>
+      <span class="summary-value" id="ability-total">--</span>
+    </div>
+    <div class="summary-stat">
+      <span class="summary-label">Assigned:</span>
+      <span class="summary-value" id="assigned-count">0 / 6</span>
+    </div>
+  </div>
+
+</div>

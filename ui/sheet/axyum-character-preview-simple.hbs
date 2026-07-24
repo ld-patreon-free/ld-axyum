@@ -1,0 +1,85 @@
+{{!-- LD Axyum - Compact Character Preview (Horizontal Layout) --}}
+<div class="axyum-simple-preview">
+  
+  {{!-- Character Identity Row --}}
+  <div class="preview-identity-row">
+    <div class="preview-avatar">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    <div class="preview-identity-info">
+      <h3 class="preview-char-name">{{character.name}}</h3>
+      <div class="preview-char-subtitle">
+        {{#if character.race.name}}{{character.race.name}}{{else}}<span class="placeholder">Race</span>{{/if}}
+        {{#if character.class.name}}{{character.class.name}}{{else}}<span class="placeholder">Class</span>{{/if}}
+        {{#if character.class.level}}{{character.class.level}}{{/if}}
+      </div>
+      {{#if character.background.name}}
+        <div class="preview-char-bg">{{character.background.name}}</div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{!-- Core Stats Row (Horizontal) --}}
+  <div class="preview-core-stats">
+    <div class="core-stat">
+      <span class="core-label">HP</span>
+      <span class="core-value hp-value">{{character.hitPoints.current}}/{{character.hitPoints.max}}</span>
+    </div>
+    <div class="core-stat">
+      <span class="core-label">AC</span>
+      <span class="core-value">{{character.armorClass}}</span>
+    </div>
+    <div class="core-stat">
+      <span class="core-label">INIT</span>
+      <span class="core-value">{{formatModifier character.initiative}}</span>
+    </div>
+    <div class="core-stat">
+      <span class="core-label">SPEED</span>
+      <span class="core-value">{{character.speed.walk}}'</span>
+    </div>
+  </div>
+
+  {{!-- Ability Scores Hex Grid --}}
+  <div class="preview-abilities-section">
+    <div class="abilities-hex-row">
+      {{#each character.abilities as |value key|}}
+        <div class="ability-hex">
+          <span class="hex-abbr">{{uppercase key}}</span>
+          <span class="hex-score">{{value}}</span>
+          <span class="hex-mod">({{abilityMod value}})</span>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{!-- Combat & Resources Row --}}
+  <div class="preview-combat-row">
+    <div class="combat-block">
+      <span class="block-label">Prof Bonus</span>
+      <span class="block-value">+{{character.proficiencyBonus}}</span>
+    </div>
+    <div class="combat-block">
+      <span class="block-label">Perception</span>
+      <span class="block-value">{{character.passivePerception}}</span>
+    </div>
+    <div class="combat-block">
+      <span class="block-label">Insight</span>
+      <span class="block-value">{{character.passiveInsight}}</span>
+    </div>
+  </div>
+
+  {{!-- Proficient Skills Tags --}}
+  {{#if skills}}
+  <div class="preview-skills-row">
+    <div class="skills-label"><i class="fas fa-star"></i> Proficiencies</div>
+    <div class="skills-tags">
+      {{#each skills}}
+        {{#if this.proficient}}
+        <span class="skill-chip">{{this.name}} {{formatModifier this.total}}</span>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+
+</div>

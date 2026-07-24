@@ -1,0 +1,446 @@
+/* ========================================
+   LD Axyum - Wizard Styles (Post-Apocalyptic)
+   ======================================== */
+
+/* ========================================
+   POST-APOCALYPTIC LAYOUT (2-Column + Top Nav)
+   ======================================== */
+
+/* Main Form Container */
+.axyum-form.ld-axyum-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+  max-height: 95vh;
+  overflow: hidden;
+  background: var(--axyum-bg-dark);
+  color: var(--axyum-text-light);
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+/* Add texture overlay for worn/distressed look */
+.axyum-form.ld-axyum-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* --- Top Navigation Bar --- */
+.axyum-topbar {
+  flex: 0 0 70px;
+  display: flex;
+  align-items: center;
+  background: var(--axyum-bg-panel);
+  border-bottom: 2px solid var(--axyum-border);
+  padding: 0 1rem;
+  z-index: 20;
+  box-shadow: var(--axyum-shadow-md);
+}
+
+/* --- Form Elements --- */
+.axyum-form select,
+.ld-axyum-window select {
+  background: rgba(60, 50, 40, 0.95) !important;
+  color: #d4c4a8 !important;
+  border: 1px solid var(--axyum-border);
+  border-radius: 2px;
+  padding: 0.5rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.axyum-form select option,
+.ld-axyum-window select option {
+  background: rgba(60, 50, 40, 0.98) !important;
+  color: #d4c4a8 !important;
+}
+
+.axyum-form input[type="text"],
+.axyum-form input[type="number"],
+.axyum-form textarea,
+.ld-axyum-window input[type="text"],
+.ld-axyum-window input[type="number"],
+.ld-axyum-window textarea {
+  background: rgba(43, 35, 25, 0.8) !important;
+  color: #d4c4a8 !important;
+  border: 1px solid var(--axyum-border);
+  border-radius: 2px;
+  padding: 0.5rem;
+  font-family: inherit;
+}
+
+/* Force all inputs in Axyum to be readable */
+.ld-axyum-window input[type="text"],
+.ld-axyum-window input[type="number"],
+.ld-axyum-window textarea,
+form.axyum-form input,
+form.axyum-form textarea {
+  background: rgba(43, 35, 25, 0.9) !important;
+  color: #d4c4a8 !important;
+}
+
+.axyum-form input:focus,
+.axyum-form select:focus {
+  outline: none;
+  border-color: var(--axyum-accent);
+  box-shadow: 0 0 8px var(--axyum-accent-glow);
+}
+
+/* --- Window Styling --- */
+.ld-axyum-window .window-content {
+  background: transparent !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.ld-axyum-window {
+  background: var(--axyum-bg-dark) !important;
+  border: 1px solid var(--axyum-border) !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8) !important;
+}
+
+.axyum-branding {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.brand-text {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--axyum-text-highlight);
+  text-shadow: 0 0 5px var(--axyum-accent-glow);
+}
+
+.axyum-steps {
+  flex: 1;
+  overflow-x: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.steps-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  padding: 0 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+  color: var(--axyum-text-muted);
+  position: relative;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.step-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--axyum-text-light);
+}
+
+.step-item.active {
+  background: linear-gradient(180deg, transparent, rgba(255, 0, 255, 0.1));
+  border-bottom-color: var(--axyum-primary);
+  color: var(--axyum-primary);
+  text-shadow: 0 0 8px var(--axyum-primary-glow);
+}
+
+.step-item.completed .step-marker {
+  background: var(--axyum-accent);
+  color: #000000;
+  border-color: var(--axyum-accent);
+  box-shadow: 0 0 15px var(--axyum-accent-glow), 0 0 30px rgba(125, 211, 252, 0.4);
+}
+
+.step-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--axyum-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.step-item.active .step-marker {
+  border-color: var(--axyum-primary);
+  background: var(--axyum-primary);
+  color: #000;
+  box-shadow: 0 0 10px var(--axyum-primary-glow);
+}
+
+.step-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.version-info {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--axyum-text-muted);
+  opacity: 0.7;
+}
+
+/* --- Body Container (Content + Preview) --- */
+.axyum-body-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  height: calc(100% - 70px) !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  position: relative;
+  background: var(--axyum-bg-dark);
+}
+
+/* --- Main Panel (Left) --- */
+.axyum-main-panel {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: radial-gradient(circle at center, rgba(40, 0, 80, 0.2) 0%, var(--axyum-bg-dark) 100%);
+  position: relative;
+  overflow: hidden !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+}
+
+/* --- Right Sidebar --- */
+.axyum-preview-sidebar {
+  flex: 0 0 450px !important;
+  width: 450px !important;
+  min-width: 450px !important;
+  max-width: 450px !important;
+  background: var(--axyum-bg-panel);
+  border-left: 2px solid var(--axyum-primary);
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  z-index: 10;
+}
+
+.step-header {
+  flex: 0 0 auto !important;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--axyum-border-light);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+.step-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin: 0 0 0.5rem 0;
+  color: var(--axyum-text-highlight);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.step-progress {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--axyum-primary);
+  box-shadow: 0 0 10px var(--axyum-primary-glow);
+  transition: width 0.5s ease;
+}
+
+/* Content Area */
+.axyum-content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  padding: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--axyum-primary) rgba(0,0,0,0.3);
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Footer Buttons */
+.axyum-footer {
+  flex: 0 0 auto !important;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+}
+
+.axyum-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.axyum-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.axyum-btn-primary {
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid var(--axyum-primary);
+  color: var(--axyum-primary);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+.axyum-btn-primary:hover {
+  background: var(--axyum-primary);
+  color: #000;
+  box-shadow: 0 0 20px var(--axyum-primary-glow);
+}
+
+.axyum-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--axyum-text-muted);
+  color: var(--axyum-text-muted);
+}
+
+.axyum-btn-secondary:hover {
+  border-color: var(--axyum-text-light);
+  color: var(--axyum-text-light);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.axyum-btn-success {
+  background: rgba(125, 211, 252, 0.1);
+  border: 1px solid var(--axyum-success);
+  color: var(--axyum-success);
+}
+
+.axyum-btn-success:hover {
+  background: var(--axyum-success);
+  color: #000;
+  box-shadow: 0 0 20px rgba(125, 211, 252, 0.6);
+}
+
+/* --- Right Sidebar: Preview --- */
+.axyum-preview-sidebar {
+  grid-area: sidebar !important;
+  width: 450px !important;
+  min-width: 450px !important;
+  max-width: 450px !important;
+  background: var(--axyum-bg-panel);
+  border-left: 2px solid var(--axyum-primary);
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  height: 100% !important;
+  margin: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.preview-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--axyum-border-light);
+  background: rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.preview-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--axyum-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.preview-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 0;
+  min-height: 0;
+  min-width: 0;
+  position: relative;
+}
+
+/* Adjust the full sheet for sidebar display */
+.preview-content .axyum-sheet-container {
+  min-width: 900px;
+  width: 900px;
+  max-width: 900px;
+  transform-origin: top left;
+  min-height: 100%;
+}
+
+.preview-content .sheet-header-bar {
+  margin-bottom: 0.75rem;
+}
+
+.preview-content .identity-row {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.preview-content .sheet-main-grid {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.preview-content .abilities-row {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}

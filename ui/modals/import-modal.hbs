@@ -1,0 +1,122 @@
+{{!-- Import Character Modal --}}
+<div class="ld-modal import-modal" style="display: none;">
+  <div class="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; display: flex; align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: var(--axyum-background); border: 2px solid var(--axyum-primary); border-radius: 12px; padding: 2rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+      {{!-- Modal Header --}}
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h2 style="margin: 0; color: var(--axyum-primary);">{{localize "LD_AXYUM.Modal.ImportCharacter"}}</h2>
+        <button class="close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--axyum-dim);">×</button>
+      </div>
+
+      {{!-- Import Info --}}
+      <div style="padding: 1rem; background: rgba(255, 193, 7, 0.1); border-left: 4px solid #FFC107; border-radius: 6px; margin-bottom: 1.5rem;">
+        <p style="margin: 0; color: var(--axyum-text);">
+          {{localize "LD_AXYUM.Modal.ImportFromExport"}}
+        </p>
+      </div>
+
+      {{!-- Import Methods --}}
+      <div class="import-methods" style="margin-bottom: 1.5rem;">
+        <h3 style="margin: 0 0 1rem 0; color: var(--axyum-primary); font-size: 1.1rem;">{{localize "LD_AXYUM.Modal.ImportMethod"}}</h3>
+        
+        {{!-- Tabs for import methods --}}
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--axyum-dim);">
+          <button class="import-tab-btn active" data-tab="file" style="flex: 1; padding: 0.75rem; background: none; border: none; border-bottom: 3px solid transparent; color: var(--axyum-dim); cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+            {{localize "LD_AXYUM.Modal.UploadFile"}}
+          </button>
+          <button class="import-tab-btn" data-tab="paste" style="flex: 1; padding: 0.75rem; background: none; border: none; border-bottom: 3px solid transparent; color: var(--axyum-dim); cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+            {{localize "LD_AXYUM.Modal.PasteJSON"}}
+          </button>
+        </div>
+
+        {{!-- File Upload Tab --}}
+        <div class="import-tab-content active" data-tab="file" style="display: block;">
+          <div style="padding: 1.5rem; background: var(--axyum-secondary); border: 2px dashed var(--axyum-primary); border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease;" class="file-drop-zone">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"></div>
+            <div style="font-weight: 600; color: var(--axyum-text); margin-bottom: 0.25rem;">{{localize "LD_AXYUM.Modal.DropFile"}}</div>
+            <p style="margin: 0.5rem 0 0 0; color: var(--axyum-dim); font-size: 0.9rem;">
+              {{localize "LD_AXYUM.Modal.OrClickBrowse"}}
+            </p>
+            <input type="file" class="file-input" accept=".json" style="display: none;">
+          </div>
+          <div class="file-name" style="margin-top: 1rem; color: var(--axyum-dim); font-size: 0.9rem; display: none;">
+            {{localize "LD_AXYUM.Modal.Selected"}}: <span class="file-name-text"></span>
+          </div>
+        </div>
+
+        {{!-- JSON Paste Tab --}}
+        <div class="import-tab-content" data-tab="paste" style="display: none;">
+          <textarea class="json-paste" placeholder='Paste your exported JSON here...' style="width: 100%; min-height: 200px; padding: 0.75rem; background: var(--axyum-secondary); border: 1px solid var(--axyum-dim); border-radius: 6px; color: var(--axyum-text); font-family: monospace; font-size: 0.85rem; resize: vertical;"></textarea>
+          <p style="margin: 0.5rem 0 0 0; color: var(--axyum-dim); font-size: 0.85rem;">
+            {{localize "LD_AXYUM.Modal.JSONHint"}}
+          </p>
+        </div>
+      </div>
+
+      {{!-- Preview Section --}}
+      <div class="preview-section" style="margin-bottom: 1.5rem; display: none; padding: 1rem; background: var(--axyum-secondary); border-radius: 8px;">
+        <h4 style="margin: 0 0 0.75rem 0; color: var(--axyum-primary);">{{localize "LD_AXYUM.Modal.Preview"}}</h4>
+        
+        <div class="preview-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.9rem;">
+          <div>
+            <span style="color: var(--axyum-dim);">Name:</span>
+            <div class="preview-name" style="color: var(--axyum-text); font-weight: 600;"></div>
+          </div>
+          <div>
+            <span style="color: var(--axyum-dim);">Level:</span>
+            <div class="preview-level" style="color: var(--axyum-text); font-weight: 600;"></div>
+          </div>
+          <div>
+            <span style="color: var(--axyum-dim);">Class:</span>
+            <div class="preview-class" style="color: var(--axyum-text); font-weight: 600;"></div>
+          </div>
+          <div>
+            <span style="color: var(--axyum-dim);">Race:</span>
+            <div class="preview-race" style="color: var(--axyum-text); font-weight: 600;"></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--axyum-dim);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; font-size: 0.85rem;">
+            <div style="text-align: center;">
+              <div class="preview-items" style="font-weight: 600; color: var(--axyum-primary);"></div>
+              <div style="color: var(--axyum-dim);">Items</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="preview-spells" style="font-weight: 600; color: var(--axyum-primary);"></div>
+              <div style="color: var(--axyum-dim);">Spells</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="preview-feats" style="font-weight: 600; color: var(--axyum-primary);"></div>
+              <div style="color: var(--axyum-dim);">Feats</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Import Warnings --}}
+      <div class="warnings-section" style="margin-bottom: 1.5rem; display: none;">
+        <div style="padding: 1rem; background: rgba(255, 193, 7, 0.1); border-left: 4px solid #FFC107; border-radius: 6px;">
+          <h4 style="margin: 0 0 0.5rem 0; color: #FFC107;">{{localize "LD_AXYUM.Modal.Warnings"}}</h4>
+          <ul class="warnings-list" style="margin: 0; padding-left: 1.5rem; color: var(--axyum-text); font-size: 0.9rem;"></ul>
+        </div>
+      </div>
+
+      {{!-- Error Section --}}
+      <div class="error-section" style="margin-bottom: 1.5rem; display: none; padding: 1rem; background: rgba(255, 107, 107, 0.1); border-left: 4px solid #FF6B6B; border-radius: 6px;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #FF6B6B;">{{localize "LD_AXYUM.Modal.Error"}}</h4>
+        <p class="error-text" style="margin: 0; color: var(--axyum-text); font-size: 0.9rem;"></p>
+      </div>
+
+      {{!-- Footer --}}
+      <div style="display: flex; gap: 1rem; justify-content: flex-end; padding-top: 1rem; border-top: 1px solid var(--axyum-dim);">
+        <button class="close-modal" style="padding: 0.75rem 1.5rem; background: var(--axyum-secondary); border: 1px solid var(--axyum-dim); border-radius: 6px; color: var(--axyum-text); cursor: pointer; font-weight: 600;">
+          {{localize "LD_AXYUM.Modal.Cancel"}}
+        </button>
+        <button class="import-btn" disabled style="padding: 0.75rem 1.5rem; background: var(--axyum-primary); border: none; border-radius: 6px; color: white; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+          {{localize "LD_AXYUM.Modal.ImportCharacter"}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

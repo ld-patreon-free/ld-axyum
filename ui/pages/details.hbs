@@ -1,0 +1,35 @@
+<div class="axyum-page">
+  <h2 class="axyum-page-title">Character Details</h2>
+  <p class="axyum-page-description">
+    Set your character's name, alignment, and appearance details.
+  </p>
+
+  <div style="display: grid; gap: 1.5rem;">
+    <div>
+      <label for="char-name" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Character Name</label>
+      <input type="text" id="char-name" name="name" value="{{characterData.name}}" placeholder="Enter character name">
+    </div>
+
+    <div>
+      <label for="alignment" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Alignment</label>
+      <select id="alignment" name="details.alignment">
+        <option value="LG" {{#if (eq characterData.details.alignment "LG")}}selected{{/if}}>Lawful Good</option>
+        <option value="NG" {{#if (eq characterData.details.alignment "NG")}}selected{{/if}}>Neutral Good</option>
+        <option value="CG" {{#if (eq characterData.details.alignment "CG")}}selected{{/if}}>Chaotic Good</option>
+        <option value="LN" {{#if (eq characterData.details.alignment "LN")}}selected{{/if}}>Lawful Neutral</option>
+        <option value="N" {{#if (eq characterData.details.alignment "N")}}selected{{/if}}>Neutral</option>
+        <option value="CN" {{#if (eq characterData.details.alignment "CN")}}selected{{/if}}>Chaotic Neutral</option>
+        <option value="LE" {{#if (eq characterData.details.alignment "LE")}}selected{{/if}}>Lawful Evil</option>
+        <option value="NE" {{#if (eq characterData.details.alignment "NE")}}selected{{/if}}>Neutral Evil</option>
+        <option value="CE" {{#if (eq characterData.details.alignment "CE")}}selected{{/if}}>Chaotic Evil</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="appearance" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Appearance</label>
+      <textarea id="appearance" name="details.appearance" placeholder="Height, weight, hair color, distinguishing marks, etc." rows="4">{{characterData.details.appearance}}</textarea>
+    </div>
+  </div>
+
+  <p style="color: #999; font-size: 0.9rem; margin-top: 2rem;"><em>Additional details (traits, ideals, bonds, flaws) will be set on the Biography page.</em></p>
+</div>

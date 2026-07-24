@@ -1,0 +1,446 @@
+.preview-content .combat-circles {
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.preview-content .ld-axyum-centerpiece {
+  grid-column: 1 / -1;
+}
+
+.preview-content .combat-stats-row {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.preview-content .panel-title {
+  font-size: 0.8rem;
+}
+
+.preview-content .ld-axyum-panel {
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.preview-content .equipment-grid,
+.preview-content .personality-grid,
+.preview-content .physical-grid {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.preview-content .attacks-grid,
+.preview-content .spells-grid {
+  font-size: 0.7rem;
+}
+
+/* Preview scrollbar */
+.preview-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.preview-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.preview-content::-webkit-scrollbar-thumb {
+  background: var(--axyum-primary);
+  border-radius: 3px;
+}
+
+.preview-content::-webkit-scrollbar-thumb:hover {
+  background: var(--axyum-accent);
+}
+
+.preview-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--axyum-text-highlight);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-shadow: 0 0 5px var(--axyum-primary);
+}
+
+.preview-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.preview-card {
+  background: var(--axyum-bg-card);
+  border: 1px solid var(--axyum-border-light);
+  border-radius: 6px;
+  padding: 0.8rem;
+}
+
+.preview-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.preview-card.half {
+  flex: 1;
+}
+
+.preview-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--axyum-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.preview-value {
+  font-size: 1rem;
+  color: var(--axyum-text-light);
+  font-weight: 500;
+}
+
+.placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-style: italic;
+}
+
+/* ========================================
+   COMPACT HORIZONTAL PREVIEW LAYOUT
+   ======================================== */
+
+.axyum-simple-preview {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Identity Row */
+.preview-identity-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--axyum-primary), rgba(138, 43, 226, 0.3));
+  border: 2px solid var(--axyum-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--axyum-accent);
+  box-shadow: 0 0 15px var(--axyum-accent-glow);
+  flex-shrink: 0;
+}
+
+.preview-identity-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.preview-char-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--axyum-text-light);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preview-char-subtitle {
+  font-size: 0.85rem;
+  color: var(--axyum-accent);
+}
+
+.preview-char-subtitle .placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+.preview-char-bg {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.2rem;
+}
+
+/* Core Stats Row (Horizontal Grid) */
+.preview-core-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.core-stat {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.core-stat:hover {
+  border-color: var(--axyum-accent);
+  box-shadow: 0 0 10px var(--axyum-accent-glow);
+}
+
+.core-label {
+  display: block;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.core-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--axyum-text-light);
+}
+
+.core-value.hp-value {
+  color: var(--axyum-accent);
+}
+
+/* Ability Scores Hex Row */
+.preview-abilities-section {
+  padding: 0.5rem 0;
+}
+
+.abilities-hex-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.4rem;
+}
+
+.ability-hex {
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  border-radius: 6px;
+  padding: 0.4rem 0.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.ability-hex:hover {
+  border-color: var(--axyum-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(125, 211, 252, 0.2);
+}
+
+.hex-abbr {
+  font-size: 0.6rem;
+  color: var(--axyum-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.hex-score {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--axyum-accent);
+  line-height: 1.2;
+  text-shadow: 0 0 8px var(--axyum-accent-glow);
+}
+
+.hex-mod {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Combat & Resources Row */
+.preview-combat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.combat-block {
+  text-align: center;
+  padding: 0.4rem;
+}
+
+.block-label {
+  display: block;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.block-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--axyum-text-light);
+}
+
+/* Skills Tags Row */
+.preview-skills-row {
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skills-label {
+  font-size: 0.7rem;
+  color: var(--axyum-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.skill-chip {
+  background: rgba(125, 211, 252, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  color: var(--axyum-accent);
+  white-space: nowrap;
+}
+
+/* Legacy preview styles */
+.preview-abilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ability-pill {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--axyum-border-light);
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.ability-key {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--axyum-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.ability-score {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--axyum-accent);
+  text-shadow: 0 0 5px var(--axyum-accent-glow);
+}
+
+.preview-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-box {
+  flex: 1;
+  background: rgba(125, 211, 252, 0.05);
+  border: 1px solid var(--axyum-accent);
+  border-radius: 6px;
+  padding: 0.8rem;
+  text-align: center;
+  box-shadow: 0 0 10px var(--axyum-accent-glow);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--axyum-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px var(--axyum-primary-glow);
+}
+
+/* --- Card Styles for Content --- */
+.axyum-card-grid,
+.axyum-selection-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* ========================================
+   SKILLS PAGE STYLING
+   ======================================== */
+
+/* Skill Source Info Panel */
+.skill-source-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  align-items: center;
+}
+
+.skill-source {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border-left: 3px solid var(--axyum-primary);
+}
+
+.source-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--axyum-text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.source-label i {
+  color: var(--axyum-primary);
+}
+
+.source-count {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--axyum-accent);
+}
+
+.source-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+

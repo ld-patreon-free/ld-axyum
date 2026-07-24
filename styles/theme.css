@@ -1,0 +1,208 @@
+/* LD Axyum - Slate and Cool Blue Theme */
+
+/*
+  This theme uses deep charcoal backgrounds, slate surfaces, and cool blue accents.
+*/
+
+:root {
+  /* Core Colors */
+  --axyum-bg-dark: #0b1120;
+  --axyum-bg-panel: rgba(15, 23, 42, 0.94);
+  --axyum-bg-card: rgba(30, 41, 59, 0.9);
+  --axyum-bg-input: rgba(15, 23, 42, 0.84);
+
+  --axyum-primary: #334155;          /* Deep slate */
+  --axyum-primary-alt: #475569;      /* Slate highlight */
+  --axyum-primary-glow: rgba(125, 211, 252, 0.45);
+
+  --axyum-accent: #7dd3fc;           /* Cool blue */
+  --axyum-accent-glow: rgba(125, 211, 252, 0.55);
+
+  --axyum-text-light: #e2e8f0;
+  --axyum-text-muted: #94a3b8;
+  --axyum-text-strong: #ffffff;
+
+  --axyum-border: rgba(125, 211, 252, 0.35);
+  --axyum-border-strong: rgba(125, 211, 252, 0.75);
+
+  --axyum-shadow: 0 10px 28px rgba(0, 0, 0, 0.75);
+  --axyum-glow: 0 0 18px rgba(125, 211, 252, 0.4);
+}
+
+/* Base window styling */
+.ld-axyum-window {
+  background: radial-gradient(circle at top, rgba(30, 41, 59, 0.95), rgba(11, 17, 32, 0.95));
+  border: 2px solid rgba(125, 211, 252, 0.4);
+  box-shadow: var(--axyum-shadow);
+  color: var(--axyum-text-light);
+}
+
+.ld-axyum-window .window-header {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+  border-bottom: 1px solid rgba(125, 211, 252, 0.45);
+}
+
+.ld-axyum-window .window-title {
+  color: var(--axyum-text-light);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+.ld-axyum-window .window-content {
+  background: rgba(15, 23, 42, 0.85);
+  border-top: 1px solid rgba(125, 211, 252, 0.3);
+  padding: 1rem;
+}
+
+/* Buttons */
+.ld-axyum-window .button {
+  background: linear-gradient(135deg, rgba(71, 85, 105, 0.98), rgba(30, 41, 59, 0.9));
+  border: 1px solid rgba(125, 211, 252, 0.7);
+  color: var(--axyum-text-strong);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ld-axyum-window .button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75);
+}
+
+.ld-axyum-window .button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+}
+
+.ld-axyum-window .button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.55);
+}
+
+/* Inputs */
+.ld-axyum-window input,
+.ld-axyum-window select,
+.ld-axyum-window textarea {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(125, 211, 252, 0.5);
+  color: var(--axyum-text-light);
+  border-radius: 5px;
+  padding: 0.6rem;
+}
+
+.ld-axyum-window input:focus,
+.ld-axyum-window select:focus,
+.ld-axyum-window textarea:focus {
+  border-color: rgba(125, 211, 252, 0.85);
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.35);
+  outline: none;
+}
+
+/* Card panels */
+.axyum-card {
+  background: rgba(30, 41, 59, 0.88);
+  border: 1px solid rgba(125, 211, 252, 0.35);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.65);
+}
+
+.axyum-card h2 {
+  color: var(--axyum-text-light);
+  margin-top: 0;
+}
+
+.axyum-card p {
+  color: var(--axyum-text-muted);
+}
+
+/* Progress bar */
+.axyum-progress-bar {
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.axyum-progress-fill {
+  background: linear-gradient(90deg, rgba(71, 85, 105, 1), rgba(125, 211, 252, 0.85));
+}
+
+/* Selection cards */
+.axyum-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  padding: 0.5rem 0;
+}
+
+.axyum-selection-card {
+  background: rgba(15, 23, 42, 0.90);
+  border: 2px solid rgba(125, 211, 252, 0.5);
+  border-radius: 10px;
+  padding: 1.75rem;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.axyum-selection-card:hover {
+  border-color: rgba(125, 211, 252, 0.85);
+  box-shadow: 0 10px 26px rgba(125, 211, 252, 0.32);
+  transform: translateY(-2px);
+}
+
+.axyum-selection-card.selected {
+  border-color: rgba(125, 211, 252, 0.95);
+  background: rgba(71, 85, 105, 0.35);
+  box-shadow: 0 10px 26px rgba(125, 211, 252, 0.4);
+}
+
+.axyum-selection-card h3,
+.axyum-selection-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--axyum-text-light);
+  margin: 0 0 0.5rem 0;
+}
+
+.axyum-selection-card p,
+.axyum-selection-card .card-desc {
+  font-size: 0.95rem;
+  color: var(--axyum-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Scrollbar */
+.ld-axyum-window ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ld-axyum-window ::-webkit-scrollbar-track {
+  background: rgba(11, 17, 32, 0.55);
+}
+
+.ld-axyum-window ::-webkit-scrollbar-thumb {
+  background: rgba(125, 211, 252, 0.7);
+  border-radius: 10px;
+  border: 2px solid rgba(11, 17, 32, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .axyum-selection-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+
+  .axyum-stat-block {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .axyum-buttons {
+    flex-direction: column;
+  }
+
+  .axyum-buttons .button {
+    width: 100%;
+  }
+}

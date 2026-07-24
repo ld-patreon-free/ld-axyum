@@ -1,0 +1,237 @@
+{{! GM Hub Main Template }}
+<div class="gm-hub-container">
+  <div class="gm-hub-header">
+    <h1><i class="fa-solid fa-crown"></i> LD Axyum - GM Hub</h1>
+    <p class="gm-hub-subtitle">Choose your game system to begin character creation</p>
+  </div>
+
+  {{! Tab Navigation }}
+  <div class="gm-hub-tabs">
+    <button class="tab-button active" data-tab="systems">
+      <i class="fa-solid fa-dungeon"></i> Systems
+    </button>
+    <button class="tab-button" data-tab="sheets">
+      <i class="fa-solid fa-scroll"></i> Character Sheets
+    </button>
+    <button class="tab-button" data-tab="settings">
+      <i class="fa-solid fa-gear"></i> Settings
+    </button>
+  </div>
+
+  {{! Systems Tab }}
+  <div class="tab-content active" data-tab="systems">
+    <div class="system-cards-container">
+      {{! Row 1 - D&D and CoC }}
+      <div class="system-cards-row row-1">
+        {{#each systems}}
+          {{#if (eq @index 0)}}
+            <button class="system-card {{cardClass}}" data-system-id="{{id}}" data-action="selectSystem">
+              <div class="system-card-glow"></div>
+              <div class="system-card-content">
+                <div class="system-icon">
+                  <i class="{{iconClass}}"></i>
+                </div>
+                <div class="system-info">
+                  <h3 class="system-name">{{name}}</h3>
+                  <p class="system-description">{{description}}</p>
+                </div>
+                <div class="system-status">
+                  {{#if available}}
+                    <span class="status-badge available">Available</span>
+                  {{else}}
+                    <span class="status-badge unavailable">Coming Soon</span>
+                  {{/if}}
+                </div>
+              </div>
+            </button>
+          {{/if}}
+          {{#if (eq @index 1)}}
+            <button class="system-card {{cardClass}}" data-system-id="{{id}}" data-action="selectSystem">
+              <div class="system-card-glow"></div>
+              <div class="system-card-content">
+                <div class="system-icon">
+                  <i class="{{iconClass}}"></i>
+                </div>
+                <div class="system-info">
+                  <h3 class="system-name">{{name}}</h3>
+                  <p class="system-description">{{description}}</p>
+                </div>
+                <div class="system-status">
+                  {{#if available}}
+                    <span class="status-badge available">Available</span>
+                  {{else}}
+                    <span class="status-badge unavailable">Coming Soon</span>
+                  {{/if}}
+                </div>
+              </div>
+            </button>
+          {{/if}}
+        {{/each}}
+      </div>
+
+      {{! Row 2 - Cyberpunk and Settings }}
+      <div class="system-cards-row row-2">
+        {{#each systems}}
+          {{#if (eq @index 2)}}
+            <button class="system-card {{cardClass}}" data-system-id="{{id}}" data-action="selectSystem">
+              <div class="system-card-glow"></div>
+              <div class="system-card-content">
+                <div class="system-icon">
+                  <i class="{{iconClass}}"></i>
+                </div>
+                <div class="system-info">
+                  <h3 class="system-name">{{name}}</h3>
+                  <p class="system-description">{{description}}</p>
+                </div>
+                <div class="system-status">
+                  {{#if available}}
+                    <span class="status-badge available">Available</span>
+                  {{else}}
+                    <span class="status-badge unavailable">Coming Soon</span>
+                  {{/if}}
+                </div>
+              </div>
+            </button>
+          {{/if}}
+        {{/each}}
+
+        {{! Settings Button - Smaller }}
+        <button class="settings-card" data-action="openSettings">
+          <div class="settings-glow"></div>
+          <div class="settings-content">
+            <div class="settings-icon">
+              <i class="fa-solid fa-gear"></i>
+            </div>
+            <div class="settings-info">
+              <h4>Settings</h4>
+              <p>Configure Axyum</p>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      {{! Row 3 - Blades and Pathfinder }}
+      <div class="system-cards-row row-3">
+        {{#each systems}}
+          {{#if (eq @index 3)}}
+            <button class="system-card {{cardClass}}" data-system-id="{{id}}" data-action="selectSystem">
+              <div class="system-card-glow"></div>
+              <div class="system-card-content">
+                <div class="system-icon">
+                  <i class="{{iconClass}}"></i>
+                </div>
+                <div class="system-info">
+                  <h3 class="system-name">{{name}}</h3>
+                  <p class="system-description">{{description}}</p>
+                </div>
+                <div class="system-status">
+                  {{#if available}}
+                    <span class="status-badge available">Available</span>
+                  {{else}}
+                    <span class="status-badge unavailable">Coming Soon</span>
+                  {{/if}}
+                </div>
+              </div>
+            </button>
+          {{/if}}
+          {{#if (eq @index 4)}}
+            <button class="system-card {{cardClass}}" data-system-id="{{id}}" data-action="selectSystem">
+              <div class="system-card-glow"></div>
+              <div class="system-card-content">
+                <div class="system-icon">
+                  <i class="{{iconClass}}"></i>
+                </div>
+                <div class="system-info">
+                  <h3 class="system-name">{{name}}</h3>
+                  <p class="system-description">{{description}}</p>
+                </div>
+                <div class="system-status">
+                  {{#if available}}
+                    <span class="status-badge available">Available</span>
+                  {{else}}
+                    <span class="status-badge unavailable">Coming Soon</span>
+                  {{/if}}
+                </div>
+              </div>
+            </button>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{! Sheets Tab }}
+  <div class="tab-content" data-tab="sheets">
+    <div class="sheets-preview-container">
+      <div class="sheets-header">
+        <h2>Character Sheet Previews</h2>
+        <p>Explore different sheet themes and layouts</p>
+      </div>
+
+      <div class="sheet-previews-grid">
+        {{#each systems}}
+          {{#if available}}
+            <div class="sheet-preview-card {{cardClass}}" data-system-id="{{id}}" data-action="previewSheet">
+              <div class="sheet-preview-header">
+                <h3>{{name}}</h3>
+                <span class="sheet-theme-badge">{{theme}}</span>
+              </div>
+              <div class="sheet-preview-content">
+                {{#if (eq id "dnd5e")}}
+                  <div class="sheet-mockup dnd5e-theme">
+                    <div class="mock-header">
+                      <div class="mock-name">CHARACTER NAME</div>
+                      <div class="mock-details">Human • Fighter 5 • Noble</div>
+                    </div>
+                    <div class="mock-abilities">
+                      <div class="mock-ability">STR 16 (+3)</div>
+                      <div class="mock-ability">DEX 14 (+2)</div>
+                      <div class="mock-ability">CON 15 (+2)</div>
+                      <div class="mock-ability">INT 10 (+0)</div>
+                      <div class="mock-ability">WIS 12 (+1)</div>
+                      <div class="mock-ability">CHA 13 (+1)</div>
+                    </div>
+                    <div class="mock-combat">
+                      <div class="mock-stat">HP: 45/45</div>
+                      <div class="mock-stat">AC: 18</div>
+                      <div class="mock-stat">Initiative: +2</div>
+                    </div>
+                    <div class="mock-skills">
+                      <div class="mock-skill">Athletics +5</div>
+                      <div class="mock-skill">Perception +3</div>
+                      <div class="mock-skill">Intimidation +3</div>
+                    </div>
+                  </div>
+                {{else}}
+                  <div class="sheet-mockup {{id}}-theme">
+                    <!-- Sheet preview mockup will be inserted here -->
+                  </div>
+                {{/if}}
+              </div>
+              <div class="sheet-preview-actions">
+                <button class="btn-preview" data-action="previewSheet" data-system-id="{{id}}">
+                  <i class="fa-solid fa-eye"></i> Preview
+                </button>
+                <button class="btn-use-sheet" data-action="useSheet" data-system-id="{{id}}">
+                  <i class="fa-solid fa-check"></i> Use This Sheet
+                </button>
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{! Settings Tab }}
+  <div class="tab-content" data-tab="settings">
+    <div class="settings-container">
+      <h2>Module Settings</h2>
+      <p>Settings panel coming soon...</p>
+    </div>
+  </div>
+
+  <div class="gm-hub-footer">
+    <p>LD Axyum - Next Generation Character Management</p>
+  </div>
+</div>

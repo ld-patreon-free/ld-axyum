@@ -1,0 +1,450 @@
+.pool-skill {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  background: rgba(125, 211, 252, 0.15);
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  border-radius: 10px;
+  color: var(--axyum-accent);
+}
+
+.skill-total {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--axyum-primary), rgba(138, 43, 226, 0.5));
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.total-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.total-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Skills Grid */
+.axyum-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.axyum-skill-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(20, 10, 40, 0.6);
+  border: 2px solid rgba(138, 43, 226, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.axyum-skill-checkbox:hover {
+  border-color: var(--axyum-primary);
+  background: rgba(138, 43, 226, 0.15);
+  transform: translateY(-2px);
+}
+
+.axyum-skill-checkbox.selected {
+  border-color: var(--axyum-accent);
+  background: rgba(125, 211, 252, 0.1);
+  box-shadow: 0 0 15px rgba(125, 211, 252, 0.2);
+}
+
+.skill-checkbox-wrapper {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.skill-checkbox-wrapper input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--axyum-border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.skill-checkbox-wrapper input:checked ~ .checkbox-custom {
+  background-color: var(--axyum-accent);
+  border-color: var(--axyum-accent);
+  box-shadow: 0 0 10px var(--axyum-accent-glow);
+}
+
+.checkbox-custom:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.skill-checkbox-wrapper input:checked ~ .checkbox-custom:after {
+  display: block;
+}
+
+.skill-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--axyum-text-light);
+}
+
+.skill-ability {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-modifier {
+  color: var(--axyum-accent);
+  font-weight: 600;
+}
+
+/* Proficiency Bonus Box */
+.proficiency-bonus-box {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 0, 0, 0.3));
+  border: 1px solid var(--axyum-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.proficiency-bonus-box h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--axyum-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prof-value {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--axyum-text-light);
+}
+
+.prof-note {
+  font-size: 0.8rem;
+  color: var(--axyum-accent);
+  margin-left: 0.5rem;
+}
+
+/* Skill Tip */
+.skill-tip {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--axyum-accent);
+}
+
+.skill-tip strong {
+  color: var(--axyum-primary);
+}
+
+/* Legacy card support */
+.axyum-selection-card {
+  flex: 1 1 200px;
+  min-width: 200px;
+  background: var(--axyum-bg-card);
+  border: 1px solid var(--axyum-border-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.axyum-selection-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--axyum-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--axyum-primary-glow);
+}
+
+.axyum-selection-card.selected {
+  background: rgba(212, 112, 74, 0.2);
+  border-color: var(--axyum-accent);
+  box-shadow: 0 0 20px var(--axyum-accent-glow);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--axyum-text-muted);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.axyum-selection-card:hover .card-icon,
+.axyum-selection-card.selected .card-icon {
+  color: var(--axyum-accent);
+  text-shadow: 0 0 10px var(--axyum-accent-glow);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--axyum-text-light);
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--axyum-text-muted);
+  line-height: 1.4;
+}
+
+/* ========================================
+   ROLE DETAIL PANEL
+   ======================================== */
+
+.role-detail-panel {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(30, 10, 40, 0.6);
+  border: 2px solid var(--axyum-primary);
+  border-radius: 8px;
+  box-shadow: 0 0 20px var(--axyum-primary-glow);
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.role-detail-panel h3 {
+  font-size: 1.8rem;
+  color: var(--axyum-primary);
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 10px var(--axyum-primary);
+  border-bottom: 2px solid var(--axyum-primary);
+  padding-bottom: 0.5rem;
+}
+
+.role-detail-panel p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--axyum-text-light);
+}
+
+.role-detail-panel .role-concept {
+  font-size: 1.05rem;
+  color: var(--axyum-accent);
+  border-left: 4px solid var(--axyum-accent);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.role-detail-panel strong {
+  color: var(--axyum-accent);
+  font-weight: 600;
+}
+
+/* ========================================
+   COMPENDIUM FILTERS
+   ======================================== */
+
+.compendium-filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(30, 10, 50, 0.6);
+  border: 1px solid var(--axyum-border);
+  border-radius: 8px;
+}
+
+.filter-label {
+  font-size: 0.95rem;
+  color: var(--axyum-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.filter-label i {
+  margin-right: 0.5rem;
+  color: var(--axyum-accent);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.compendium-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(20, 10, 40, 0.8);
+  border: 2px solid rgba(138, 43, 226, 0.3);
+  border-radius: 6px;
+  color: var(--axyum-text-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.compendium-filter-btn:hover {
+  background: rgba(138, 43, 226, 0.2);
+  border-color: var(--axyum-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.4);
+}
+
+.compendium-filter-btn.active {
+  background: linear-gradient(135deg, var(--axyum-primary), var(--axyum-accent));
+  border-color: var(--axyum-accent);
+  color: #fff;
+  box-shadow: 0 0 20px var(--axyum-primary-glow);
+}
+
+.compendium-filter-btn i {
+  font-size: 0.9em;
+}
+
+.filter-name {
+  font-weight: 600;
+}
+
+.filter-count {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85em;
+}
+
+.compendium-filter-btn.active .filter-count {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.role-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+/* ========================================
+/* ========================================
+   INTERACTIVE ABILITIES PAGE (Standard Layout)
+   ======================================== */
+
+.ability-scores-page {
+  /* No specific page-level overrides that break layout */
+}
+
+.ability-method-buttons {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(20, 10, 40, 0.4);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.abilities-interactive-container {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  min-height: 400px;
+  width: 100%;
+}
+
+.dice-roll-pool, .ability-assignment-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-title {
+  color: var(--axyum-primary);
+  margin: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-shadow: 0 0 10px var(--axyum-primary-glow);
+}
+
+/* Roll Slots & Assignment Area Layout */
+.roll-slots {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.roll-slot {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+  padding: 0.75rem 1rem !important;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  position: relative;
+  min-height: 75px;
+  transition: all 0.2s ease;
+}
+
+.roll-slot:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--axyum-primary);
+}
+

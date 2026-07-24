@@ -1,0 +1,85 @@
+{
+  "id": "ld-axyum",
+  "title": "LD Axyum",
+  "description": "A unified character creation and management system for Foundry VTT. Create characters through a comprehensive wizard, then manage them in an integrated character sheet.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": 13,
+    "verified": 14
+  },
+  "authors": [
+    {
+      "name": "Lisa's Dungeon",
+      "url": "https://github.com/lisasdungeon"
+    }
+  ],
+  "esmodules": [
+    "axyum.mjs",
+    "scripts/ld-localize-helper.js"
+  ],
+  "styles": [
+    "styles/theme.css",
+    "styles/wizard.css",
+    "styles/wizard-2.css",
+    "styles/wizard-3.css",
+    "styles/wizard-4.css",
+    "styles/wizard-5.css",
+    "styles/wizard-6.css",
+    "styles/compendium-selector.css",
+    "styles/scene-control-button.css",
+    "gm-hub/gm-hub.css",
+    "systems/dnd5e/sheet/dnd5e-sheet.css",
+    "systems/dnd5e/sheet/dnd5e-sheet-2.css"
+  ],
+  "languages": [
+    { "lang": "en", "name": "English", "path": "lang/en.json" }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "5.1.0",
+          "verified": "5.2.1"
+        }
+      }
+    ],
+    "requires": [],
+    "recommends": [
+      {
+        "id": "dnd-players-handbook",
+        "type": "module",
+        "reason": "Provides expanded character creation options and content"
+      },
+      {
+        "id": "dnd-tashas-cauldron",
+        "type": "module",
+        "reason": "Includes optional character creation features"
+      },
+      {
+        "id": "dnd-monster-manual",
+        "type": "module",
+        "reason": "Provides additional character content"
+      },
+      {
+        "id": "dnd-dungeon-masters-guide",
+        "type": "module",
+        "reason": "Provides optional rules and character content"
+      }
+    ],
+    "conflicts": []
+  },
+  "socket": false,
+  "url": "https://github.com/lisasdungeon/ld-axyum",
+  "manifest": "https://github.com/lisasdungeon/ld-axyum/releases/latest/download/module.json",
+  "download": "https://github.com/lisasdungeon/ld-axyum/releases/download/v1.0.0/ld-axyum-v1.0.0.zip",
+  "bugs": "https://github.com/lisasdungeon/ld-axyum/issues",
+  "readme": "https://github.com/lisasdungeon/ld-axyum/blob/main/README.md",
+  "license": "https://github.com/lisasdungeon/ld-axyum/blob/main/LICENSE",
+  "changelog": "https://github.com/lisasdungeon/ld-axyum/blob/main/CHANGELOG.md",
+  "protected": false,
+  "flags": {
+    "allowBugReporter": true
+  }
+}
