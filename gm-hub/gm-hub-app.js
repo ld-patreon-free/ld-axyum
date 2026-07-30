@@ -116,7 +116,8 @@ class GmHubApp extends HandlebarsApplicationMixin(ApplicationV2) {
         return;
       }
 
-      const wizard = new AxyumApp({ mode: 'create' });
+      const WizardClass = system.wizardClass || AxyumApp;
+      const wizard = new WizardClass({ mode: 'create' });
       await forceRender(wizard);
     } catch (err) {
       console.error('GM Hub | Error launching wizard:', err);
@@ -165,7 +166,7 @@ class GmHubApp extends HandlebarsApplicationMixin(ApplicationV2) {
     console.log('GM Hub | Setting default sheet for:', systemId);
 
     // TODO: Set user's preferred sheet for this system
-    ui.notifications.info(`Default sheet set to ${systemId} theme!`);
+    ui.notifications.info(`Default sheet selection for ${systemId} is coming soon!`);
   }
 
   _onRender(context, options) {

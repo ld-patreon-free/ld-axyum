@@ -76,9 +76,9 @@ class CharacterImporter {
     validAbilities.forEach(ability => {
       const score = importData.abilities[ability];
       if (score !== undefined && (score < 3 || score > 20)) {
-        throw new Error(`Invalid ability score for ${ability.toUpperCase()}: ${score}. Must be between 3 and 20.`, {
-          details: { ability, score }
-        });
+        const error = new Error(`Invalid ability score for ${ability.toUpperCase()}: ${score}. Must be between 3 and 20.`);
+        error.details = { ability, score };
+        throw error;
       }
     });
   }
@@ -89,6 +89,15 @@ class CharacterImporter {
   static async applyImportToActor(importData, actor) {
     try {
       this._validateImportData(importData);
+
+      importData = {
+        ...importData,
+        hitPoints: importData.hitPoints || {},
+        proficiencies: importData.proficiencies || {},
+        class: importData.class || {},
+        homebrew: importData.homebrew || {},
+        conditions: importData.conditions || {}
+      };
 
       const updates = {
         name: importData.character.name || actor.name,

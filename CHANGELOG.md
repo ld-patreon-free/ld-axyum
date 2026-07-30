@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1] - 2026-07-30
+
+- Fixed the GM Hub launching the wrong character wizard for a selected game system instead of using that system's own registered wizard class.
+- Fixed a misleading notification claiming a default sheet had been set when the feature was not yet implemented.
+- Fixed character import crashing on valid minimal data missing optional hit points, proficiencies, or class sections.
+- Fixed a validation error losing its attached details due to an incorrect Error constructor usage.
+- Removed an unused cross-module registry hook that had no effect on the module's functionality.
+- Removed roughly 2,900 lines of unreferenced code (a quantum-portal integration cluster and an unwired recommendation/tooltip/new-player-guide subsystem) that shipped in the module but were never loaded.
+- Replaced emoji glyphs in the character export modal with the module's existing icon set.
+
 ## [1.0.0] - 2026-07-24
 
 - Rebranded the module as LD Axyum under Lisa's Dungeon.

@@ -43,24 +43,6 @@ const openAxyum = async () => {
 
 globalThis.openLDAxyum = openAxyum;
 
-// Optional: leave a soft pointer for older portal shells (no legacy automation hard-depend).
-// Do NOT require an external module registry for the module to be usable.
-if (globalThis.RNK_MODULES) {
-  const already = globalThis.RNK_MODULES.some((m) => m?.id === MODULE_ID);
-  if (!already) {
-    globalThis.RNK_MODULES.push({
-      id: MODULE_ID,
-      title: 'Axyum Character Creator',
-      icon: 'fa-solid fa-atom',
-      order: 10,
-      onClick: () => openAxyum(),
-      onChange: (isActive) => {
-        if (isActive) openAxyum();
-      }
-    });
-  }
-}
-
 // ============================================
 // LAZY LOADING INITIALIZATION
 // ============================================
@@ -402,13 +384,6 @@ Hooks.once('ready', async () => {
   console.log('LD Axyum | Ready hook - pre-loading everything in background');
   initializeAxyumIfNeeded();
 });
-
-// Optional Quantum Portal soft-register (harmless if portal absent)
-if (globalThis.RNK_QUANTUM_PORTAL?.modules?.add) {
-  globalThis.RNK_QUANTUM_PORTAL.modules.add(MODULE_ID);
-  globalThis.RNK_QUANTUM_PORTAL.applicationClasses?.add?.('AxyumApp');
-  globalThis.RNK_QUANTUM_PORTAL.applicationClasses?.add?.('GmHubApp');
-}
 
 // ============================================
 // Exports
